@@ -7,5 +7,9 @@ export default defineNuxtConfig({
   ui: { colorMode: false },
   nitro: {
     preset: 'bun'
+  },
+  image: {
+    provider: 'static',
+    dir: 'public'
   }
 })
