@@ -1,14 +1,14 @@
 <script setup lang="ts">
 const certificates = [
-  '/cert-1.jpg',
-  '/cert-2.jpg',
-  '/cert-3.jpg',
-  '/cert-4.jpg',
-  '/cert-5.jpg',
-  '/cert-6.jpg',
-  '/cert-7.jpg',
-  '/cert-8.jpg',
-  '/cert-9.jpg',
+  'https://s3.twcstorage.ru/f2f0a35f-e48e7736-24c2-4274-88c1-0854b97bbed7/cert-1.jpg',
+  'https://s3.twcstorage.ru/f2f0a35f-e48e7736-24c2-4274-88c1-0854b97bbed7/cert-2.jpg',
+  'https://s3.twcstorage.ru/f2f0a35f-e48e7736-24c2-4274-88c1-0854b97bbed7/cert-3.jpg',
+  'https://s3.twcstorage.ru/f2f0a35f-e48e7736-24c2-4274-88c1-0854b97bbed7/cert-4.jpg',
+  'https://s3.twcstorage.ru/f2f0a35f-e48e7736-24c2-4274-88c1-0854b97bbed7/cert-5.jpg',
+  'https://s3.twcstorage.ru/f2f0a35f-e48e7736-24c2-4274-88c1-0854b97bbed7/cert-6.jpg',
+  'https://s3.twcstorage.ru/f2f0a35f-e48e7736-24c2-4274-88c1-0854b97bbed7/cert-7.jpg',
+  'https://s3.twcstorage.ru/f2f0a35f-e48e7736-24c2-4274-88c1-0854b97bbed7/cert-8.jpg',
+  'https://s3.twcstorage.ru/f2f0a35f-e48e7736-24c2-4274-88c1-0854b97bbed7/cert-9.jpg',
 ]
 </script>
 
