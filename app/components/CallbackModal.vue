@@ -1,0 +1,84 @@
+<script setup lang="ts">
+import type { FormSubmitEvent } from '@nuxt/ui'
+import { vMaska } from 'maska/vue'
+import * as z from 'zod'
+import { Bot } from 'grammy'
+
+const { open } = defineProps<{
+  open: boolean
+}>()
+
+const emit = defineEmits<{
+  (e: 'toggleCallbackModal', value: boolean): void
+}>()
+
+const schema = z.object({
+  name: z.string('*обязательное поле').min(2, 'Имя должно содержать хотя бы 2 символа.'),
+  phone: z.string('*обязательное поле').min(2, 'Номер телефона не валиден.'),
+  email: z.email('*обязательное поле')
+})
+
+type Schema = z.output<typeof schema>
+
+const state = reactive<Partial<Schema>>({
+  name: undefined,
+  phone: undefined,
+  email: undefined
+})
+
+const toast = useToast()
+
+const bot = new Bot('7570834719:AAFpduL2h3L0NuI6OsF69QTmtBQveKAnirc')
+
+const onSubmit = async (event: FormSubmitEvent<Schema>) => {
+  await bot.api.sendMessage('-1002981267402', `Имя: ${event.data.name}\nТелефон: ${event.data.phone}\nПочта: ${event.data.email}`)
+
+  toast.add({
+    title: 'Заявка получена!',
+    description: 'Мы свяжемся с Вами в ближайшее время.',
+    color: 'neutral'
+  })
+
+  emit('toggleCallbackModal', false)
+}
+</script>
+
+<template>
+  <UModal
+    :open="open"
+    @update:open="$emit('toggleCallbackModal', false)"
+    title="Заявка на обратный звонок"
+    description="Пожалуйста, заполните форму и мы постараемся связаться с вами как можно скорее."
+    :ui="{
+      title: 'text-[#28445C]',
+      description: 'text-[#212B23]'
+    }"
+  >
+    <template #body>
+      <UForm
+        :schema="schema"
+        :state="state"
+        class="space-y-4"
+        @submit="onSubmit"
+      >
+        <UFormField label="Ваше имя" name="name">
+          <UInput v-model="state.name" placeholder="Иван Иванов" color="neutral" />
+        </UFormField>
+
+        <UFormField label="Номер телефона" name="phone">
+          <UInput v-model="state.phone" placeholder="+7 000 000 00 00" color="neutral" v-maska="'+7 ### ### ## ##'"/>
+        </UFormField>
+
+        <UFormField label="Email" name="email">
+          <UInput v-model="state.email" placeholder="ivanivanov@gmail.com" color="neutral" />
+        </UFormField>
+
+        <UButton type="submit" class="bg-[#2A4A5D] hover:bg-[#223C52] focus:bg-[#223C52] active:bg-[#1D3448]">
+          Отправить
+        </UButton>
+      </UForm>
+    </template>
+  </UModal>
+</template>
+
+<style scoped></style>
