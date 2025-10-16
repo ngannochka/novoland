@@ -5,70 +5,70 @@ defineEmits<{
 
 const products = [
   {
-    src: '/catalog-1.jpg',
+    src: 'https://s3.twcstorage.ru/f2f0a35f-e48e7736-24c2-4274-88c1-0854b97bbed7/catalog-1.jpg',
     title: 'Cтрип-монодозы',
     volume: '2-3 мл',
     material: 'ПВХ, ПЭ, EVOH',
     filmColor: 'белый, прозрачный'
   },
   {
-    src: '/catalog-2.png',
+    src: 'https://s3.twcstorage.ru/f2f0a35f-e48e7736-24c2-4274-88c1-0854b97bbed7/catalog-2.png',
     title: 'Плоско-выпуклая ампула Ф 1/1',
     volume: '2 мл',
     material: 'ПВХ, ПЭ, EVOH',
     filmColor: 'белый, коричневый, возможен собственный'
   },
   {
-    src: '/catalog-3.png',
+    src: 'https://s3.twcstorage.ru/f2f0a35f-e48e7736-24c2-4274-88c1-0854b97bbed7/catalog-3.png',
     title: 'Плоско-выпуклая ампула Ф 2/1',
     volume: '1 мл',
     material: 'ПВХ, ПЭ, EVOH',
     filmColor: 'белый, коричневый, возможен собственный'
   },
   {
-    src: '/catalog-4.png',
+    src: 'https://s3.twcstorage.ru/f2f0a35f-e48e7736-24c2-4274-88c1-0854b97bbed7/catalog-4.png',
     title: 'Плоско-выпуклая ампула Ф 3/1',
     volume: '1-1,5 мл',
     material: 'ПВХ, ПЭ, EVOH',
     filmColor: 'белый, коричневый, возможен собственный'
   },
   {
-    src: '/catalog-5.png',
+    src: 'https://s3.twcstorage.ru/f2f0a35f-e48e7736-24c2-4274-88c1-0854b97bbed7/catalog-5.png',
     title: 'Плоско-выпуклая ампула Ф 4/1',
     volume: '2-3 мл',
     material: 'ПВХ, ПЭ, EVOH',
     filmColor: 'белый, коричневый, возможен собственный'
   },
   {
-    src: '/catalog-6.png',
+    src: 'https://s3.twcstorage.ru/f2f0a35f-e48e7736-24c2-4274-88c1-0854b97bbed7/catalog-6.png',
     title: 'Плоско-выпуклая ампула Ф 5/1',
     volume: '9-10 мл',
     material: 'ПВХ, ПЭ, EVOH',
     filmColor: 'белый, коричневый, возможен собственный'
   },
   {
-    src: '/catalog-7.png',
+    src: 'https://s3.twcstorage.ru/f2f0a35f-e48e7736-24c2-4274-88c1-0854b97bbed7/catalog-7.png',
     title: 'Двояковыпуклая ампула Ф 6/2',
     volume: '40 мл',
     material: 'ПВХ, ПЭ, EVOH',
     filmColor: 'белый, коричневый, возможен собственный'
   },
   {
-    src: '/catalog-8.png',
+    src: 'https://s3.twcstorage.ru/f2f0a35f-e48e7736-24c2-4274-88c1-0854b97bbed7/catalog-8.png',
     title: 'Двояковыпуклая ампула Ф 7/2',
     volume: '18 мл',
     material: 'ПВХ, ПЭ, EVOH',
     filmColor: 'белый, коричневый, возможен собственный'
   },
   {
-    src: '/catalog-9.png',
+    src: 'https://s3.twcstorage.ru/f2f0a35f-e48e7736-24c2-4274-88c1-0854b97bbed7/catalog-9.png',
     title: 'Двояковыпуклая ампула Ф 8/2',
     volume: '25 мл',
     material: 'ПВХ, ПЭ, EVOH',
     filmColor: 'белый, коричневый, возможен собственный'
   },
   {
-    src: '/catalog-10.png',
+    src: 'https://s3.twcstorage.ru/f2f0a35f-e48e7736-24c2-4274-88c1-0854b97bbed7/catalog-10.png',
     title: 'Двояковыпуклая ампула Ф 9/2',
     volume: '50 мл',
     material: 'ПВХ, ПЭ, EVOH',

@@ -59,7 +59,7 @@ const onClick = () => {
   >
     <template #title>
       <NuxtImg
-        src="/logo.svg"
+        src="https://s3.twcstorage.ru/f2f0a35f-e48e7736-24c2-4274-88c1-0854b97bbed7/logo.svg"
         alt="Логотип компании Novoland"
         class="h-8"
       />

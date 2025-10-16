@@ -70,7 +70,7 @@ const items: NavigationMenuItem[] = [
 
     <template #right>
       <NuxtLink to="/">
-        <NuxtImg src="/footer-logo.svg" class="h-7" />
+        <NuxtImg src="https://s3.twcstorage.ru/f2f0a35f-e48e7736-24c2-4274-88c1-0854b97bbed7/footer-logo.svg" class="h-7" />
       </NuxtLink>
 
       <NuxtLink to="mailto:info@nvlnd.ru" class="flex items-center gap-1 text-white">

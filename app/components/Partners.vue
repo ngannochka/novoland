@@ -1,16 +1,16 @@
 <script setup lang="ts">
 const partners = [
   {
-    src: '/partner-1.png'
+    src: 'https://s3.twcstorage.ru/f2f0a35f-e48e7736-24c2-4274-88c1-0854b97bbed7/partner-1.png'
   },
   {
-    src: '/partner-2.png'
+    src: 'https://s3.twcstorage.ru/f2f0a35f-e48e7736-24c2-4274-88c1-0854b97bbed7/partner-2.png'
   },
   {
-    src: '/partner-3.png'
+    src: 'https://s3.twcstorage.ru/f2f0a35f-e48e7736-24c2-4274-88c1-0854b97bbed7/partner-3.png'
   },
   {
-    src: '/partner-4.png'
+    src: 'https://s3.twcstorage.ru/f2f0a35f-e48e7736-24c2-4274-88c1-0854b97bbed7/partner-4.png'
   },
 ]
 </script>

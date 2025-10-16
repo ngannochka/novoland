@@ -8,8 +8,4 @@ export default defineNuxtConfig({
   nitro: {
     preset: 'bun'
   },
-  image: {
-    provider: 'static',
-    dir: 'public'
-  }
 })
