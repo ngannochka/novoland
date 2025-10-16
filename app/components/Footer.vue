@@ -40,7 +40,7 @@ const items: NavigationMenuItem[] = [
 <template>
   <UFooter
     :ui="{
-      root: 'pb-[12vw] bg-[#28445C] bg-[url(/footer-bgi.svg)] bg-no-repeat bg-bottom bg-size-[60vw_auto]',
+      root: 'pb-[12vw] bg-[#28445C] bg-[url(https://s3.twcstorage.ru/f2f0a35f-e48e7736-24c2-4274-88c1-0854b97bbed7/footer-bgi.svg)] bg-no-repeat bg-bottom bg-size-[60vw_auto]',
       left: 'flex flex-col',
       right: 'flex flex-col gap-3',
       center: 'self-center'
