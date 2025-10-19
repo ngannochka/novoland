@@ -2,30 +2,39 @@
 defineEmits<{
   (e: 'toggleCallbackModal', value: boolean): void
 }>()
+
+const { data: hero } = await useAsyncData('hero', () =>
+  queryCollection('hero')
+    .first()
+)
 </script>
 
 <template>
   <UPageHero
-    description="«НовоЛэнд» — это современное производственное предприятие, специализирующееся на полном цикле от идеи и  разработки рецептуры  до упаковки"
+    :description="hero?.description"
     :ui="{
-      description: 'text-[#28445C]'
+      title: 'font-serif text-[20vw] text-[#28445C] uppercase',
+      description: 'font-sans text-[#28445C]'
     }"
   >
     <template #title>
-      <h1 class="grid grid-cols-2 grid-rows-2 text-[16vw] xl:text-[14vw] text-[#28445C]">
-        <span class="col-start-1 row-start-1 justify-self-end">
-          НОВО
+      <h1 class="flex flex-col">
+        <span class="self-start">
+          ново
         </span>
-        <span class="col-start-2 row-start-2 justify-self-start">
-          ЛЭНД
+        <span class="self-end">
+          лэнд
         </span>
       </h1>
     </template>
 
     <template #links>
-      <UButton size="xl" class="rounded-full bg-[#2A4A5D] hover:bg-[#223C52] focus:bg-[#223C52] active:bg-[#1D3448]" @click="$emit('toggleCallbackModal', true)">
-        Заказать обратный звонок
-      </UButton>
+      <UButton
+        :label="hero?.callbackBtn"
+        size="xl"
+        class="font-sans rounded-full bg-[#2A4A5D] hover:bg-[#223C52] focus:bg-[#223C52] active:bg-[#1D3448]"
+        @click="$emit('toggleCallbackModal', true)"
+      />
     </template>
   </UPageHero>
 </template>

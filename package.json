@@ -4,14 +4,16 @@
   "private": true,
   "scripts": {
     "build": "nuxt build",
-    "dev": "nuxt dev",
+    "dev": "nuxt dev --tunnel",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
+    "@nuxt/content": "^3.7.1",
     "@nuxt/image": "1.11.0",
     "@nuxt/ui": "4.0.1",
+    "better-sqlite3": "^12.4.1",
     "grammy": "^1.38.3",
     "maska": "^3.2.0",
     "nuxt": "^4.1.3",
