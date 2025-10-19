@@ -4,9 +4,17 @@ const modal = ref(false)
 const toggleCallbackModal = (value: boolean) => {
   modal.value = value
 }
+
+// const { data: authors } = await useAsyncData('authors', () => {
+//   return queryCollection('authors')
+//     .order('name', 'DESC')
+//     .all()
+// })
 </script>
 
 <template>
+<!--  {{ authors }}-->
+
   <Header @toggle-callback-modal="toggleCallbackModal" />
   <UMain>
     <Hero @toggle-callback-modal="toggleCallbackModal" />
