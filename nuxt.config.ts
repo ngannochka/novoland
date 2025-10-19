@@ -10,7 +10,7 @@ export default defineNuxtConfig({
   },
   content: {
     preview: {
-      dev: true // 👈 включает Studio Preview API в dev-режиме
+      api: 'https://api.nuxt.studio' // подключение к Studio API
     }
   }
 })
