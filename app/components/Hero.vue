@@ -13,7 +13,7 @@ const { data: hero } = await useAsyncData('hero', () =>
   <UPageHero
     :description="hero?.description"
     :ui="{
-      title: 'font-serif text-[20vw] text-[#28445C] uppercase',
+      title: 'font-serif text-[clamp(270px, 20vw ,90px)] text-[#28445C] uppercase',
       description: 'font-sans text-[#28445C]'
     }"
   >

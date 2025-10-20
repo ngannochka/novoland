@@ -1,45 +1,16 @@
 <script setup lang="ts">
-import type { NavigationMenuItem } from '@nuxt/ui'
+// import { gsap } from "gsap";
+
+const { data: header } = await useAsyncData('header', () =>
+  queryCollection('header')
+    .first()
+)
 
 const emit = defineEmits<{
   (e: 'toggleCallbackModal', value: boolean): void
 }>()
 
-const items: NavigationMenuItem[] = [
-  {
-    label: 'Каталог услуг',
-    to: '#services',
-  },
-  {
-    label: 'Каталог ампул',
-    to: '#catalog',
-  },
-  {
-    label: 'О компании',
-    to: '#about',
-  },
-  {
-    label: 'Партнеры',
-    to: '#partners',
-  },
-  {
-    label: 'Достижения',
-    to: '#accomplishments',
-  },
-  {
-    label: 'Сертификаты',
-    to: '#certificates',
-  },
-  {
-    label: 'Новости',
-    to: '#news',
-  },
-  {
-    label: 'Контакты',
-    to: '#contacts',
-  },
-]
-
+// todo: ref
 const isBurgerOpen = ref<boolean>(false)
 
 const onClick = () => {
@@ -47,6 +18,52 @@ const onClick = () => {
 
   emit('toggleCallbackModal', true)
 }
+
+// watch(isBurgerOpen, async (value) => {
+//   await nextTick()
+//
+//   if (value) {
+//     gsap.fromTo(
+//       '.test',
+//       { opacity: 0, y: -40 },
+//       {
+//         opacity: 1,
+//         y: 0,
+//         duration: 0.9,
+//         ease: 'power2.out' //
+//       }
+//     )
+//
+//     return
+//   }
+//
+//   gsap.fromTo(
+//     '.test',
+//     {
+//       opacity: 1,
+//       y: 0,
+//       duration: 0.9,
+//       ease: 'power2.out' //
+//     },
+//     { opacity: 0, y: -40 },
+//
+//   )
+// })
+
+// const test = async (value) => {
+//   await nextTick()
+//
+//   gsap.fromTo(
+//     '.test',
+//     { opacity: 0, y: -40 },
+//     {
+//       opacity: 1,
+//       y: 0,
+//       duration: 0.9,
+//       ease: 'power2.out' //
+//     }
+//   )
+// }
 </script>
 
 <template>
@@ -54,36 +71,28 @@ const onClick = () => {
     v-model:open="isBurgerOpen"
     :ui="{
       right: 'lg:hidden',
-      body: 'flex flex-col items-center gap-10',
+      body: 'flex flex-col items-center gap-10 test',
     }"
   >
     <template #title>
       <NuxtImg
-        src="https://s3.twcstorage.ru/f2f0a35f-e48e7736-24c2-4274-88c1-0854b97bbed7/logo.svg"
+        src="/headerLogo.svg"
         alt="Логотип компании Novoland"
         class="h-8"
       />
     </template>
 
-    <UNavigationMenu
-      :items="items"
-      :ui="{
-        link: 'text-[#28445C]'
-      }"
-    />
+    <NavMenu />
 
     <template #body>
-      <UNavigationMenu
-        :items="items"
-        :ui="{
-          list: 'flex flex-col items-center',
-          link: 'text-[#28445C]'
-        }"
-      />
+      <NavMenu />
 
-      <UButton class="bg-[#2A4A5D] active:bg-[#1D3448]" @click="onClick">
-        Заказать обратный звонок
-      </UButton>
+      <UButton
+        :label="header?.callbackBtn"
+        size="xl"
+        class="font-sans rounded-full bg-[#2A4A5D] hover:bg-[#223C52] focus:bg-[#223C52] active:bg-[#1D3448]"
+        @click="onClick"
+      />
     </template>
   </UHeader>
 </template>
