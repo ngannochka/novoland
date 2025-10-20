@@ -1,14 +1,15 @@
 <script setup lang="ts">
 // import { gsap } from "gsap";
 
-const { data: header } = await useAsyncData('header', () =>
-  queryCollection('header')
-    .first()
-)
 
 const emit = defineEmits<{
   (e: 'toggleCallbackModal', value: boolean): void
 }>()
+
+const { data: header } = await useAsyncData('header', () =>
+  queryCollection('header')
+    .first()
+)
 
 // todo: ref
 const isBurgerOpen = ref<boolean>(false)

@@ -13,12 +13,11 @@ const { data: hero } = await useAsyncData('hero', () =>
   <UPageHero
     :description="hero?.description"
     :ui="{
-      title: 'font-serif text-[clamp(270px, 20vw ,90px)] text-[#28445C] uppercase',
       description: 'font-sans text-[#28445C]'
     }"
   >
     <template #title>
-      <h1 class="flex flex-col">
+      <h1 class="flex flex-col font-serif text-[clamp(90px,calc(36.49px+12.16vw),270px)] uppercase text-[#28445C]">
         <span class="self-start">
           ново
         </span>

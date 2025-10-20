@@ -17,8 +17,6 @@ export default defineContentConfig({
       schema: z.object({
         description: z.string(),
         callbackBtn: z.string(),
-        // avatar: z.string(),
-        // url: z.string()
       })
     })
   }
