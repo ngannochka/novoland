@@ -20,11 +20,11 @@ const partners = [
     id="partners"
     title="Наши партнеры"
     :ui="{
-      title: 'text-left text-[#28445C]',
+      title: 'font-serif text-left text-[#28445C]',
     }"
   >
     <UMarquee>
-      <NuxtImg v-for="partner in partners" :src="partner.src" />
+      <NuxtImg v-for="(partner, index) in partners" :key="index" :src="partner.src" />
     </UMarquee>
   </UPageSection>
 </template>
