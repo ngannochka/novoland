@@ -1,4 +1,26 @@
 <script setup lang="ts">
+import { gsap } from "gsap";
+
+import { ScrollTrigger } from "gsap/ScrollTrigger"
+// ScrollSmoother requires ScrollTrigger
+import { ScrollSmoother } from "gsap/ScrollSmoother"
+
+gsap.registerPlugin(ScrollTrigger,ScrollSmoother)
+
+onMounted(() => {
+  ScrollSmoother.create({
+    wrapper: "#smooth-wrapper",
+    content: "#smooth-content",
+    smooth: 3,
+    effects: true,
+  })
+})
+//
+// ScrollSmoother.create({
+//   smooth: 1,
+//   effects: true,
+// })
+
 const modal = ref(false)
 
 const toggleCallbackModal = (value: boolean) => {
@@ -16,6 +38,8 @@ const toggleCallbackModal = (value: boolean) => {
 <!--  {{ authors }}-->
 
   <Header @toggle-callback-modal="toggleCallbackModal" />
+  <div id="smooth-wrapper">
+    <div id="smooth-content">
   <UMain>
     <Hero @toggle-callback-modal="toggleCallbackModal" />
     <Services />
@@ -29,6 +53,8 @@ const toggleCallbackModal = (value: boolean) => {
     <Contacts />
   </UMain>
   <Footer />
+    </div>
+  </div>
   <CallbackModal :open="modal" @toggle-callback-modal="toggleCallbackModal"/>
 </template>
 
