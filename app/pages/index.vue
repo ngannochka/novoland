@@ -11,7 +11,7 @@ onMounted(() => {
   ScrollSmoother.create({
     wrapper: "#smooth-wrapper",
     content: "#smooth-content",
-    smooth: 3,
+    smooth: 1,
     effects: true,
   })
 })
