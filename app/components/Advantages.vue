@@ -32,7 +32,7 @@ const advantages = [
     id="advantages"
     title="Наши преимущества"
     :ui="{
-      title: 'text-left text-[#28445C]',
+      title: 'text-left font-serif text-[#28445C]',
     }"
   >
     <UPageGrid>
@@ -42,13 +42,16 @@ const advantages = [
         :title="advantage.title"
         :description="advantage.description"
         variant="solid"
-        icon="oui:check-in-circle-filled"
+
         :ui="{
-          root: 'bg-[#314158]',
-          description: 'text-white',
-          leadingIcon: 'text-white',
+          root: 'rounded-3xl bg-[url(/carbon--checkmark-outline.svg)] bg-no-repeat bg-top-right bg-size-[45px_auto] bg-[#314158]',
+          title: 'font-sans',
+          description: 'font-sans text-white',
+          leadingIcon: 'text-white text-7xl',
         }"
-      />
+      >
+<!--        <template #></template>-->
+      </UPageCard>
     </UPageGrid>
   </UPageSection>
 </template>

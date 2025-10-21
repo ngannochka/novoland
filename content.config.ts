@@ -18,6 +18,21 @@ export default defineContentConfig({
         description: z.string(),
         callbackBtn: z.string(),
       })
-    })
+    }),
+
+    contacts: defineCollection({
+      type: 'data',
+      source: 'contacts/*.json',
+      schema: z.object({
+        title: z.string().describe('Заголовок секции'),
+        cards: z.array(
+          z.object({
+            title: z.string(),
+            description: z.string(),
+            to: z.string().optional(),
+          })
+        )
+      })
+    }),
   }
 })
