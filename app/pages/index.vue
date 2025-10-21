@@ -11,10 +11,17 @@ onMounted(() => {
   ScrollSmoother.create({
     wrapper: "#smooth-wrapper",
     content: "#smooth-content",
-    smooth: 1,
+    smooth: 2,
     effects: true,
   })
 })
+
+// const scrollToSection = (id: string) => {
+//   const target = document.querySelector(id);
+//   if (target && smoother) {
+//     smoother.scrollTo(target, true); // true = с плавной анимацией
+//   }
+// };
 //
 // ScrollSmoother.create({
 //   smooth: 1,
