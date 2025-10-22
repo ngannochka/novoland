@@ -5,16 +5,16 @@ import { ScrollTrigger } from "gsap/ScrollTrigger"
 // ScrollSmoother requires ScrollTrigger
 import { ScrollSmoother } from "gsap/ScrollSmoother"
 
-gsap.registerPlugin(ScrollTrigger,ScrollSmoother)
-
-onMounted(() => {
-  ScrollSmoother.create({
-    wrapper: "#smooth-wrapper",
-    content: "#smooth-content",
-    smooth: 2,
-    effects: true,
-  })
-})
+// gsap.registerPlugin(ScrollTrigger,ScrollSmoother)
+//
+// onMounted(() => {
+//   ScrollSmoother.create({
+//     wrapper: "#smooth-wrapper",
+//     content: "#smooth-content",
+//     smooth: 1,
+//     effects: true,
+//   })
+// })
 
 // const scrollToSection = (id: string) => {
 //   const target = document.querySelector(id);
