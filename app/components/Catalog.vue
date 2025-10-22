@@ -82,51 +82,102 @@ const products = [
     id="catalog"
     title="Каталог ампул"
     :ui="{
-      title: 'text-left text-[#28445C]',
+      title: 'font-serif text-left text-[#28445C]',
     }"
   >
     <UPageGrid>
-      <UBlogPost
+      <UCard
         v-for="(product, index) in products"
         :key="index"
-        :title="product.title"
-        :image="product.src"
-        variant="ghost"
-        :ui="{
-          description: 'flex flex-col'
-        }"
       >
-        <template #description>
-          <dl class="mb-5 grid grid-cols-2">
-            <dt>
-              Объем:
-            </dt>
-            <dd class="text-right">
-              {{ product.volume }}
-            </dd>
+        <template #header>
+          <NuxtImg
+            :src="product.src"
+            :alt="product.title"
+          />
+        </template>
 
-            <dt>
-              Материал:
-            </dt>
-            <dd class="text-right">
-              {{ product.material }}
-            </dd>
+        <h3>
+          {{ product.title }}
+        </h3>
 
-            <dt>
-              Цвет пленки:
-            </dt>
-            <dd class="text-right">
-              {{ product.filmColor }}
-            </dd>
-          </dl>
+        <dl>
+          <dt>
+            Объем:
+          </dt>
+          <dd>
+            {{ product.volume }}
+          </dd>
 
-          <UButton class="self-end bg-[#28445C] hover:bg-[#223C52] focus:bg-[#223C52] active:bg-[#1D3448]" @click="$emit('toggleCallbackModal', true)">
+          <dt>
+            Материал:
+          </dt>
+          <dd>
+            {{ product.material }}
+          </dd>
+
+          <dt>
+            Цвет пленки:
+          </dt>
+          <dd>
+            {{ product.filmColor }}
+          </dd>
+        </dl>
+
+        <template #footer>
+          <UButton class="font-sans rounded-full bg-[#2A4A5D] hover:bg-[#223C52] focus:bg-[#223C52] active:bg-[#1D3448]">
             Заказать звонок
           </UButton>
         </template>
+      </UCard>
 
-        footer
-      </UBlogPost>
+<!--      <USeparator />-->
+<!--      </template>-->
+
+
+<!--      <UBlogPost-->
+<!--        v-for="(product, index) in products"-->
+<!--        :key="index"-->
+
+<!--        :image="product.src"-->
+<!--        :title="product.title"-->
+
+<!--        variant="ghost"-->
+<!--        :ui="{-->
+<!--          description: 'flex flex-col'-->
+<!--        }"-->
+<!--      >-->
+<!--        <template #description>-->
+<!--          <dl class="mb-5 grid grid-cols-2">-->
+<!--            <dt>-->
+<!--              Объем:-->
+<!--            </dt>-->
+<!--            <dd class="text-right">-->
+<!--              {{ product.volume }}-->
+<!--            </dd>-->
+
+<!--            <dt>-->
+<!--              Материал:-->
+<!--            </dt>-->
+<!--            <dd class="text-right">-->
+<!--              {{ product.material }}-->
+<!--            </dd>-->
+
+<!--            <dt>-->
+<!--              Цвет пленки:-->
+<!--            </dt>-->
+<!--            <dd class="text-right">-->
+<!--              {{ product.filmColor }}-->
+<!--            </dd>-->
+<!--          </dl>-->
+
+<!--          <UButton class="self-end bg-[#28445C] hover:bg-[#223C52] focus:bg-[#223C52] active:bg-[#1D3448]" @click="$emit('toggleCallbackModal', true)">-->
+<!--            Заказать звонок-->
+<!--          </UButton>-->
+<!--        </template>-->
+
+<!--        footer-->
+<!--      </UBlogPost>-->
 
     </UPageGrid>
   </UPageSection>
