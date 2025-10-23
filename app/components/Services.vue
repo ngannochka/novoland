@@ -1,33 +1,72 @@
 <script setup lang="ts">
-import type { AccordionItem } from '@nuxt/ui'
-
-// const items = ref([
-//   {
-//     title: 'Розлив и фасовка',
-//   },
-//   {
-//     title: 'Этикетирование и маркировка',
-//   },
-//   {
-//     title: 'Упаковка',
-//   }
-// ])
-
-const items = ref<AccordionItem[]>([
+const plans = ref([
   {
-    label: 'Is Nuxt UI free to use?',
-    content: 'Yes! Nuxt UI is completely free and open source under the MIT license. All 100+ components are available to everyone.'
+    title: 'Розлив & фасовка',
+    description:
+      'Производим жидкие и полужидкие БАДы, косметику и wellness-продукты под вашим брендом. Контрактный розлив на современном оборудовании.',
+    // price: 'от $249',
+    features: [
+      'Розлив в пластиковые ампулы и монодозы',
+      'Фасовка в стики, тубы, флаконы, банки',
+      'Контроль объёма и герметичности'
+    ],
+    button: {
+      label: 'Заказать розлив'
+    },
+    ui: {
+      root: 'rounded-2xl bg-[url(/service-1.svg)] bg-cover bg-center bg-no-repeat bg-black/50 bg-blend-multiply',
+      title: 'font-sans text-white',
+      description: 'font-sans text-white/90 mb-6',
+      featureTitle: 'font-sans text-white',
+      featureIcon: 'text-white',
+      button: 'rounded-full bg-white font-sans text-[#28445C]'
+    }
   },
   {
-    label: 'Can I use Nuxt UI with Vue without Nuxt?',
-    content: 'Yes! While optimized for Nuxt, Nuxt UI works perfectly with standalone Vue projects via our Vite plugin. You can follow the [installation guide](/docs/getting-started/installation/vue) to get started.'
+    title: 'Этикетирование & маркировка',
+    description:
+      'Поможем с оформлением и идентификацией вашей продукции. От нанесения этикеток до обязательной маркировки и сертификации.',
+    // price: 'от $499',
+    features: [
+      'Нанесение бренд-этикеток любой формы и размера',
+      'Маркировка DataMatrix / Честный Знак',
+      'Печать QR-кодов и серийных номеров'
+    ],
+    button: {
+      label: 'Заказать маркировку'
+    },
+    ui: {
+      root: 'rounded-2xl bg-[url(/service-2.svg)] bg-cover bg-center bg-no-repeat bg-black/60 bg-blend-multiply',
+      title: 'font-sans text-white',
+      description: 'font-sans text-white/90 mb-6',
+      featureTitle: 'font-sans text-white',
+      featureIcon: 'text-white',
+      button: 'rounded-full bg-white font-sans text-[#28445C]'
+    }
   },
   {
-    label: 'Is Nuxt UI production-ready?',
-    content: 'Yes! Nuxt UI is used in production by thousands of applications with extensive tests, regular updates, and active maintenance.'
+    title: 'Упаковка',
+    description:
+      'Финальный этап, где продукт получает завершённый вид. Бережно упаковываем и готовим к отгрузке или продаже.',
+    // price: 'от $999',
+    features: [
+      'Индивидуальная и групповая упаковка',
+      'Термоусадочная, картонная и flow-pack упаковка',
+      'Формирование транспортных коробов и паллет'
+    ],
+    button: {
+      label: 'Заказать упаковку'
+    },
+    ui: {
+      root: 'rounded-2xl bg-[url(/service-3.svg)] bg-cover bg-center bg-no-repeat bg-black/60 bg-blend-multiply',
+      title: 'font-sans text-white',
+      description: 'font-sans text-white/90 mb-6',
+      featureTitle: 'font-sans text-white',
+      featureIcon: 'text-white',
+      button: 'rounded-full bg-white font-sans text-[#28445C]'
+    }
   }
 ])
-
 </script>
 
 <template>
@@ -40,36 +79,7 @@ const items = ref<AccordionItem[]>([
       description: 'text-left font-sans text-[#28445C]',
     }"
   >
-    <UAccordion :items="items">
-      <template #leading>
-        test
-      </template>
-
-      <template #default>
-        fsfdsfsdf
-      </template>
-
-      <template #trailing>
-        test2
-      </template>
-    </UAccordion>
-
-    <!--    <UPageList-->
-<!--      :ui="{-->
-<!--        root: 'flex gap-4'-->
-<!--      }"-->
-<!--    >-->
-<!--      <UStepper-->
-<!--        disabled-->
-<!--        :default-value="-1"-->
-<!--        :items="items"-->
-<!--        :ui="{-->
-<!--          trigger: 'bg-[#314158]',-->
-<!--          indicator: 'text-white',-->
-<!--          separator: 'bg-[#314158]'-->
-<!--        }"-->
-<!--      />-->
-<!--    </UPageList>-->
+    <UPricingPlans :plans="plans" />
   </UPageSection>
 </template>
 

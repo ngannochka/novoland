@@ -9,70 +9,70 @@ const products = [
     title: 'Cтрип-монодозы',
     volume: '2-3 мл',
     material: 'ПВХ, ПЭ, EVOH',
-    filmColor: 'белый, прозрачный'
+    filmColor: 'белый, прозрачный, белый, прозрачный'
   },
   {
     src: 'https://s3.twcstorage.ru/f2f0a35f-e48e7736-24c2-4274-88c1-0854b97bbed7/catalog-2.png',
     title: 'Плоско-выпуклая ампула Ф 1/1',
     volume: '2 мл',
     material: 'ПВХ, ПЭ, EVOH',
-    filmColor: 'белый, коричневый, возможен собственный'
+    filmColor: 'белый, коричневый, собственный'
   },
   {
     src: 'https://s3.twcstorage.ru/f2f0a35f-e48e7736-24c2-4274-88c1-0854b97bbed7/catalog-3.png',
     title: 'Плоско-выпуклая ампула Ф 2/1',
     volume: '1 мл',
     material: 'ПВХ, ПЭ, EVOH',
-    filmColor: 'белый, коричневый, возможен собственный'
+    filmColor: 'белый, коричневый, собственный'
   },
   {
     src: 'https://s3.twcstorage.ru/f2f0a35f-e48e7736-24c2-4274-88c1-0854b97bbed7/catalog-4.png',
     title: 'Плоско-выпуклая ампула Ф 3/1',
     volume: '1-1,5 мл',
     material: 'ПВХ, ПЭ, EVOH',
-    filmColor: 'белый, коричневый, возможен собственный'
+    filmColor: 'белый, коричневый, собственный'
   },
   {
     src: 'https://s3.twcstorage.ru/f2f0a35f-e48e7736-24c2-4274-88c1-0854b97bbed7/catalog-5.png',
     title: 'Плоско-выпуклая ампула Ф 4/1',
     volume: '2-3 мл',
     material: 'ПВХ, ПЭ, EVOH',
-    filmColor: 'белый, коричневый, возможен собственный'
+    filmColor: 'белый, коричневый, собственный'
   },
   {
     src: 'https://s3.twcstorage.ru/f2f0a35f-e48e7736-24c2-4274-88c1-0854b97bbed7/catalog-6.png',
     title: 'Плоско-выпуклая ампула Ф 5/1',
     volume: '9-10 мл',
     material: 'ПВХ, ПЭ, EVOH',
-    filmColor: 'белый, коричневый, возможен собственный'
+    filmColor: 'белый, коричневый, собственный'
   },
   {
     src: 'https://s3.twcstorage.ru/f2f0a35f-e48e7736-24c2-4274-88c1-0854b97bbed7/catalog-7.png',
     title: 'Двояковыпуклая ампула Ф 6/2',
     volume: '40 мл',
     material: 'ПВХ, ПЭ, EVOH',
-    filmColor: 'белый, коричневый, возможен собственный'
+    filmColor: 'белый, коричневый, собственный'
   },
   {
     src: 'https://s3.twcstorage.ru/f2f0a35f-e48e7736-24c2-4274-88c1-0854b97bbed7/catalog-8.png',
     title: 'Двояковыпуклая ампула Ф 7/2',
     volume: '18 мл',
     material: 'ПВХ, ПЭ, EVOH',
-    filmColor: 'белый, коричневый, возможен собственный'
+    filmColor: 'белый, коричневый, собственный'
   },
   {
     src: 'https://s3.twcstorage.ru/f2f0a35f-e48e7736-24c2-4274-88c1-0854b97bbed7/catalog-9.png',
     title: 'Двояковыпуклая ампула Ф 8/2',
     volume: '25 мл',
     material: 'ПВХ, ПЭ, EVOH',
-    filmColor: 'белый, коричневый, возможен собственный'
+    filmColor: 'белый, коричневый, собственный'
   },
   {
     src: 'https://s3.twcstorage.ru/f2f0a35f-e48e7736-24c2-4274-88c1-0854b97bbed7/catalog-10.png',
     title: 'Двояковыпуклая ампула Ф 9/2',
     volume: '50 мл',
     material: 'ПВХ, ПЭ, EVOH',
-    filmColor: 'белый, коричневый, возможен собственный'
+    filmColor: 'белый, коричневый, собственный'
   },
 ]
 </script>
@@ -86,99 +86,69 @@ const products = [
     }"
   >
     <UPageGrid>
-      <UCard
+      <template
         v-for="(product, index) in products"
         :key="index"
       >
-        <template #header>
-          <NuxtImg
-            :src="product.src"
-            :alt="product.title"
-          />
-        </template>
+        <UCard
 
-        <h3>
-          {{ product.title }}
-        </h3>
+          variant="solid"
+          :ui="{
+            root: 'bg-transparent',
+            header: '',
+            body: '',
+            footer: 'flex justify-end'
+          }"
+        >
+          <template #header>
+            <NuxtImg
+              :src="product.src"
+              :alt="product.title"
+              class="w-full"
+            />
+          </template>
 
-        <dl>
-          <dt>
-            Объем:
-          </dt>
-          <dd>
-            {{ product.volume }}
-          </dd>
+          <h3 class="font-sans text-base text-pretty font-semibold text-[#2A4A5D] mb-4">
+            {{ product.title }}
+          </h3>
 
-          <dt>
-            Материал:
-          </dt>
-          <dd>
-            {{ product.material }}
-          </dd>
+          <dl class="grid grid-cols-[auto_1fr] gap-y-2 font-sans text-[15px] text-pretty text-black">
+            <dt>
+              Объем:
+            </dt>
+            <dd class="text-right">
+              {{ product.volume }}
+            </dd>
 
-          <dt>
-            Цвет пленки:
-          </dt>
-          <dd>
-            {{ product.filmColor }}
-          </dd>
-        </dl>
+            <dt>
+              Материал:
+            </dt>
+            <dd class="text-right">
+              {{ product.material }}
+            </dd>
 
-        <template #footer>
-          <UButton class="font-sans rounded-full bg-[#2A4A5D] hover:bg-[#223C52] focus:bg-[#223C52] active:bg-[#1D3448]">
-            Заказать звонок
-          </UButton>
-        </template>
-      </UCard>
+            <dt>
+              Цвет пленки:
+            </dt>
+            <dd class="text-right">
+              {{ product.filmColor }}
+            </dd>
+          </dl>
 
-<!--      <USeparator />-->
-<!--      </template>-->
+          <template #footer>
+            <UButton class="font-sans rounded-full bg-[#2A4A5D] hover:bg-[#223C52] focus:bg-[#223C52] active:bg-[#1D3448]">
+              Заказать звонок
+            </UButton>
+          </template>
+        </UCard>
 
-
-<!--      <UBlogPost-->
-<!--        v-for="(product, index) in products"-->
-<!--        :key="index"-->
-
-<!--        :image="product.src"-->
-<!--        :title="product.title"-->
-
-<!--        variant="ghost"-->
-<!--        :ui="{-->
-<!--          description: 'flex flex-col'-->
-<!--        }"-->
-<!--      >-->
-<!--        <template #description>-->
-<!--          <dl class="mb-5 grid grid-cols-2">-->
-<!--            <dt>-->
-<!--              Объем:-->
-<!--            </dt>-->
-<!--            <dd class="text-right">-->
-<!--              {{ product.volume }}-->
-<!--            </dd>-->
-
-<!--            <dt>-->
-<!--              Материал:-->
-<!--            </dt>-->
-<!--            <dd class="text-right">-->
-<!--              {{ product.material }}-->
-<!--            </dd>-->
-
-<!--            <dt>-->
-<!--              Цвет пленки:-->
-<!--            </dt>-->
-<!--            <dd class="text-right">-->
-<!--              {{ product.filmColor }}-->
-<!--            </dd>-->
-<!--          </dl>-->
-
-<!--          <UButton class="self-end bg-[#28445C] hover:bg-[#223C52] focus:bg-[#223C52] active:bg-[#1D3448]" @click="$emit('toggleCallbackModal', true)">-->
-<!--            Заказать звонок-->
-<!--          </UButton>-->
-<!--        </template>-->
-
-<!--        footer-->
-<!--      </UBlogPost>-->
-
+        <USeparator
+          :ui="{
+            root: 'opacity-60',
+            border: 'border-[rgba(40,68,92,0.3)]'
+          }"
+        />
+      </template>
     </UPageGrid>
   </UPageSection>
 </template>
