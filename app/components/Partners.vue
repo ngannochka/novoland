@@ -1,22 +1,34 @@
 <script setup lang="ts">
-const partners = [
-  {
-    src: 'https://s3.twcstorage.ru/f2f0a35f-e48e7736-24c2-4274-88c1-0854b97bbed7/partner-1.png',
-    to: 'https://google.com/',
-  },
-  {
-    src: 'https://s3.twcstorage.ru/f2f0a35f-e48e7736-24c2-4274-88c1-0854b97bbed7/partner-2.png',
-    to: 'https://google.com/',
-  },
-  {
-    src: 'https://s3.twcstorage.ru/f2f0a35f-e48e7736-24c2-4274-88c1-0854b97bbed7/partner-3.png',
-    to: 'https://google.com/',
-  },
-  {
-    src: 'https://s3.twcstorage.ru/f2f0a35f-e48e7736-24c2-4274-88c1-0854b97bbed7/partner-4.png',
-    to: 'https://google.com/',
-  },
-]
+import { gsap } from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+
+gsap.registerPlugin(ScrollTrigger)
+
+const { data: partners } = await useAsyncData('partners', () =>
+  queryCollection('partners')
+    .all()
+)
+
+onMounted(() => {
+  const animation = {
+    autoAlpha: 0,
+    duration: 0.3,
+    scale: 0.95,
+    y: 40,
+    ease: 'expo.out',
+  }
+
+  gsap.timeline({
+    scrollTrigger: {
+      trigger: '#partners',
+      start: 'top 80%',
+      end: 'bottom 60%',
+      toggleActions: 'play none none reverse',
+    }
+  })
+    .from('.partners .partners__title', animation)
+    .from('.partners .partners__marquee', animation, '>-0.15')
+})
 </script>
 
 <template>
@@ -24,10 +36,11 @@ const partners = [
     id="partners"
     title="Наши партнеры"
     :ui="{
-      title: 'font-serif text-left text-[#28445C]',
+      title: 'partners__title font-serif text-left text-[#28445C]',
     }"
+    class="partners"
   >
-    <UMarquee>
+    <UMarquee class="partners__marquee">
       <NuxtLink v-for="(partner, index) in partners" :key="index" :to="partner.to" target="_blank">
         <NuxtImg :src="partner.src" />
       </NuxtLink>
