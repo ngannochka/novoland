@@ -78,13 +78,11 @@ export default defineContentConfig({
     contacts: defineCollection({
       type: 'data',
       source: 'contacts/**.json',
-      schema: z.array(
-        z.object({
-          title: z.string(),
-          description: z.string(),
-          to: z.string().optional(),
-        })
-      )
+      schema: z.object({
+        title: z.string(),
+        description: z.string(),
+        to: z.string().optional(),
+      })
     }),
   }
 })

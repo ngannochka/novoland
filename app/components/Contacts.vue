@@ -6,7 +6,7 @@ gsap.registerPlugin(ScrollTrigger)
 
 const { data: contacts } = await useAsyncData('contacts', () =>
   queryCollection('contacts')
-    .first()
+    .all()
 )
 
 onMounted(async () => {
@@ -14,7 +14,7 @@ onMounted(async () => {
 
   const animation = {
     autoAlpha: 0,
-    duration: 0.6,
+    duration: 0.3,
     scale: 0.95,
     y: 40,
     ease: 'expo.out',
@@ -29,7 +29,7 @@ onMounted(async () => {
     }
   })
     .from('.contacts .contacts__title', animation)
-    .from('.contacts .contacts__body', animation, '>-0.2')
+    .from('.contacts .contacts__body', animation, '>-0.15')
 })
 </script>
 
