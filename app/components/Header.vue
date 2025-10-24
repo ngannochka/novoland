@@ -30,7 +30,7 @@ const toggleMobileNav = async (value: boolean) => {
         y: 0,
         scale: 1,
         pointerEvents: 'auto',
-        duration: 0.6,
+        duration: 0.3,
         ease: 'expo.out',
       }
     )
@@ -39,7 +39,7 @@ const toggleMobileNav = async (value: boolean) => {
       autoAlpha: 0,
       y: -40,
       scale: 0.95,
-      duration: 0.2,
+      duration: 0.15,
       ease: 'power1.in',
       onComplete: () => {
         isMobileNavOpen.value = false

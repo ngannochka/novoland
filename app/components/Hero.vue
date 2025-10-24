@@ -17,7 +17,7 @@ const handleCallbackButtonClick = () => {
 onMounted(() => {
   const animation = {
     autoAlpha: 0,
-    duration: 0.6,
+    duration: 0.3,
     scale: 0.95,
     y: 40,
     ease: 'expo.out',
@@ -25,8 +25,8 @@ onMounted(() => {
 
   gsap.timeline()
     .from('.hero .hero__title--start', animation)
-    .from('.hero .hero__title--end', animation, '>-0.3')
-    .from('.hero .hero__description', animation, '>-0.2')
+    .from('.hero .hero__title--end', animation, '>+0.3')
+    .from('.hero .hero__description', animation, '>')
     .from('.hero .hero__button', animation, '>')
 })
 </script>
