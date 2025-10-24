@@ -125,25 +125,24 @@ const toggleCallbackModal = (value: boolean) => {
 
 <template>
   <Header @openCallbackModal="toggleCallbackModal" />
-
-  <!--  <div id="smooth-wrapper">-->
-<!--    <div id="smooth-content">-->
   <UMain>
     <Hero @openCallbackModal="toggleCallbackModal" />
+
     <Services />
     <Catalog @toggle-callback-modal="toggleCallbackModal" class="section" />
+
     <Advantages class="section" />
     <About class="section" />
     <Partners class="section" />
     <Accomplishments class="section" />
     <Certificates class="section" />
     <News class="section" />
-<!--    <Contacts class="section" />-->
+    <Contacts class="section" />
   </UMain>
+
   <Footer class="section"/>
-<!--    </div>-->
-<!--  </div>-->
   <CallbackModal :open="modal" @toggle-callback-modal="toggleCallbackModal"/>
+
 </template>
 
 <style scoped></style>

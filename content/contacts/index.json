@@ -1,24 +1,21 @@
-{
-  "title": "Контакты",
-  "cards": [
-    {
-      "title": "Адрес",
-      "description": "г. Новосибирск, ул.Громова, 14",
-      "to": "https://go.2gis.com/olAWn"
-    },
-    {
-      "title": "Адрес электронной почты",
-      "description": "info@nvlnd.ru",
-      "to": "mailto:info@nvlnd.ru"
-    },
-    {
-      "title": "Телефон",
-      "description": "8 800 444 79 42",
-      "to": "tel:+78004447942"
-    },
-    {
-      "title": "График работы",
-      "description": "Пн-пт с 9:00 до 18:00 (перерыв с 12:00 до 13:00)"
-    }
-  ]
-}
+[
+  {
+    "title": "Адрес",
+    "description": "г. Новосибирск, ул.Громова, 14",
+    "to": "https://go.2gis.com/olAWn"
+  },
+  {
+    "title": "Адрес электронной почты",
+    "description": "info@nvlnd.ru",
+    "to": "mailto:info@nvlnd.ru"
+  },
+  {
+    "title": "Телефон",
+    "description": "8 800 444 79 42",
+    "to": "tel:+78004447942"
+  },
+  {
+    "title": "График работы",
+    "description": "Пн-пт с 9:00 до 18:00 (перерыв с 12:00 до 13:00)"
+  }
+]

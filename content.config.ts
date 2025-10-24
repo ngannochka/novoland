@@ -20,21 +20,6 @@ export default defineContentConfig({
       })
     }),
 
-    contacts: defineCollection({
-      type: 'data',
-      source: 'contacts/*.json',
-      schema: z.object({
-        title: z.string().describe('Заголовок секции'),
-        cards: z.array(
-          z.object({
-            title: z.string(),
-            description: z.string(),
-            to: z.string().optional(),
-          })
-        )
-      })
-    }),
-
     advantages: defineCollection({
       type: 'data',
       source: 'advantages/**.json',
@@ -88,6 +73,18 @@ export default defineContentConfig({
         image: z.string(),
         date: z.string(),
       })
-    })
+    }),
+
+    contacts: defineCollection({
+      type: 'data',
+      source: 'contacts/*.json',
+      schema: z.array(
+        z.object({
+          title: z.string(),
+          description: z.string(),
+          to: z.string().optional(),
+        })
+      )
+    }),
   }
 })
