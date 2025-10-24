@@ -1,9 +1,8 @@
 <script setup lang="ts">
-// import { gsap } from "gsap";
-
+import { gsap } from 'gsap'
 
 const emit = defineEmits<{
-  (e: 'toggleCallbackModal', value: boolean): void
+  (e: 'openCallbackModal', value: true): void
 }>()
 
 const { data: header } = await useAsyncData('header', () =>
@@ -11,69 +10,58 @@ const { data: header } = await useAsyncData('header', () =>
     .first()
 )
 
-// todo: ref
-const isBurgerOpen = ref<boolean>(false)
+const isMobileNavOpen = ref<boolean>(false)
 
-const onClick = () => {
-  isBurgerOpen.value = false
+const toggleMobileNav = async (value: boolean) => {
+  if (value) {
+    isMobileNavOpen.value = true
+    await nextTick()
 
-  emit('toggleCallbackModal', true)
+    gsap.fromTo(
+      '.body',
+      {
+        opacity: 0,
+        y: 40,
+        scale: 0.95,
+        pointerEvents: 'none',
+      },
+      {
+        opacity: 1,
+        y: 0,
+        scale: 1,
+        pointerEvents: 'auto',
+        duration: 0.6,
+        ease: 'expo.out',
+      }
+    )
+  } else {
+    gsap.to('.body', {
+      autoAlpha: 0,
+      y: -40,
+      scale: 0.95,
+      duration: 0.2,
+      ease: 'power1.in',
+      onComplete: () => {
+        isMobileNavOpen.value = false
+      },
+    })
+  }
 }
 
-// watch(isBurgerOpen, async (value) => {
-//   await nextTick()
-//
-//   if (value) {
-//     gsap.fromTo(
-//       '.test',
-//       { opacity: 0, y: -40 },
-//       {
-//         opacity: 1,
-//         y: 0,
-//         duration: 0.9,
-//         ease: 'power2.out' //
-//       }
-//     )
-//
-//     return
-//   }
-//
-//   gsap.fromTo(
-//     '.test',
-//     {
-//       opacity: 1,
-//       y: 0,
-//       duration: 0.9,
-//       ease: 'power2.out' //
-//     },
-//     { opacity: 0, y: -40 },
-//
-//   )
-// })
-
-// const test = async (value) => {
-//   await nextTick()
-//
-//   gsap.fromTo(
-//     '.test',
-//     { opacity: 0, y: -40 },
-//     {
-//       opacity: 1,
-//       y: 0,
-//       duration: 0.9,
-//       ease: 'power2.out' //
-//     }
-//   )
-// }
+const handleCallbackButtonClick = () => {
+  isMobileNavOpen.value = false
+  emit('openCallbackModal', true)
+}
 </script>
 
 <template>
   <UHeader
-    v-model:open="isBurgerOpen"
     :ui="{
       right: 'lg:hidden',
-      body: 'flex flex-col items-center gap-10 test',
+      body: 'body flex flex-col items-center gap-10',
     }"
+    :open="isMobileNavOpen"
+    @update:open="toggleMobileNav"
   >
     <template #title>
       <NuxtImg
@@ -89,10 +77,10 @@ const onClick = () => {
       <NavMenu />
 
       <UButton
-        :label="header?.callbackBtn"
+        :label="header?.callbackButton"
         size="xl"
         class="font-sans rounded-full bg-[#2A4A5D] hover:bg-[#223C52] focus:bg-[#223C52] active:bg-[#1D3448]"
-        @click="onClick"
+        @click="handleCallbackButtonClick"
       />
     </template>
   </UHeader>

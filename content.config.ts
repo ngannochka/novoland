@@ -7,7 +7,7 @@ export default defineContentConfig({
       type: 'data',
       source: 'header/*.json',
       schema: z.object({
-        callbackBtn: z.string(),
+        callbackButton: z.string(),
       })
     }),
 
@@ -16,7 +16,7 @@ export default defineContentConfig({
       source: 'hero/*.json',
       schema: z.object({
         description: z.string(),
-        callbackBtn: z.string(),
+        callbackButton: z.string(),
       })
     }),
 
@@ -34,5 +34,13 @@ export default defineContentConfig({
         )
       })
     }),
+
+    certificates: defineCollection({
+      type: 'data',
+      source: 'certificates/**.json',
+      schema: z.object({
+        src: z.string()
+      })
+    })
   }
 })

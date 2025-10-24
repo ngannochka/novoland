@@ -50,8 +50,8 @@ const onSubmit = async (event: FormSubmitEvent<Schema>) => {
     title="Заявка на обратный звонок"
     description="Пожалуйста, заполните форму и мы постараемся связаться с вами как можно скорее."
     :ui="{
-      title: 'text-[#28445C]',
-      description: 'text-[#212B23]'
+      title: 'font-serif text-[#28445C]',
+      description: 'font-sans text-[#212B23]'
     }"
   >
     <template #body>
@@ -61,19 +61,59 @@ const onSubmit = async (event: FormSubmitEvent<Schema>) => {
         class="space-y-4"
         @submit="onSubmit"
       >
-        <UFormField label="Ваше имя" name="name">
-          <UInput v-model="state.name" placeholder="Иван Иванов" color="neutral" />
+        <UFormField
+          label="Ваше имя"
+          name="name"
+          :ui="{
+            label: 'font-sans'
+          }"
+        >
+          <UInput
+            v-model="state.name"
+            placeholder="Иван Иванов"
+            color="neutral"
+            :ui="{
+              base: 'w-full rounded-full'
+            }"
+          />
         </UFormField>
 
-        <UFormField label="Номер телефона" name="phone">
-          <UInput v-model="state.phone" placeholder="+7 000 000 00 00" color="neutral" v-maska="'+7 ### ### ## ##'"/>
+        <UFormField
+          label="Номер телефона"
+          name="phone"
+          :ui="{
+            label: 'font-sans'
+          }"
+        >
+          <UInput
+            v-model="state.phone"
+            placeholder="+7 000 000 00 00"
+            color="neutral"
+            v-maska="'+7 ### ### ## ##'"
+            :ui="{
+              base: 'w-full rounded-full'
+            }"
+          />
         </UFormField>
 
-        <UFormField label="Email" name="email">
-          <UInput v-model="state.email" placeholder="ivanivanov@gmail.com" color="neutral" />
+        <UFormField
+          label="Email"
+          name="email"
+          :ui="{
+            label: 'font-sans'
+          }"
+        >
+          <UInput
+            v-model="state.email"
+            placeholder="ivanivanov@gmail.com"
+            color="neutral"
+            :ui="{
+              base: 'rounded-full'
+            }"
+          />
         </UFormField>
 
-        <UButton type="submit" class="bg-[#2A4A5D] hover:bg-[#223C52] focus:bg-[#223C52] active:bg-[#1D3448]">
+        <UButton type="submit" class="rounded-full font-sans bg-[#2A4A5D] hover:bg-[#223C52] focus:bg-[#223C52] active:bg-[#1D3448]">
           Отправить
         </UButton>
       </UForm>

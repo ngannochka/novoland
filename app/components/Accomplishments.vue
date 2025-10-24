@@ -1,4 +1,10 @@
 <script setup lang="ts">
+import { gsap } from 'gsap'
+
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+
+gsap.registerPlugin(ScrollTrigger)
+
 const accomplishments = [
   {
     description: 'Являемся членами международного гуминового сообщества IHSS',
@@ -25,6 +31,30 @@ const accomplishments = [
     icon: 'lucide:map-pin'
   },
 ]
+
+onMounted(() => {
+  const cards = document.querySelectorAll('.accomplishment')
+
+  cards.forEach((card, i) => {
+    gsap.fromTo(
+      card,
+      { opacity: 0, y: 25, filter: 'blur(8px)' },
+      {
+        opacity: 1,
+        y: 0,
+        filter: 'blur(0px)',
+        duration: 0.7, // быстрее
+        ease: 'power3.out',
+        delay: i * 0.08, // быстрее каскад
+        scrollTrigger: {
+          trigger: card,
+          start: 'top 85%',
+          toggleActions: 'play none none reverse',
+        },
+      }
+    )
+  })
+})
 </script>
 
 <template>
@@ -34,6 +64,7 @@ const accomplishments = [
     :ui="{
       title: 'font-serif text-left text-[#28445C]',
     }"
+    class="accomplishments"
   >
     <UPageGrid>
       <UPageCard
@@ -46,6 +77,7 @@ const accomplishments = [
           leadingIcon: 'text-white',
           description: 'font-sans text-white'
         }"
+        class="accomplishment"
       />
     </UPageGrid>
   </UPageSection>
