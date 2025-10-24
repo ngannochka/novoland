@@ -27,7 +27,7 @@ onMounted(() => {
     }
   })
     .from('.certificates .certificates__title', animation)
-    .from('.certificates .certificates__carousel', animation, '>-0.2')
+    .from('.certificates .certificates__carousel', animation, '>-0.15')
 })
 </script>
 

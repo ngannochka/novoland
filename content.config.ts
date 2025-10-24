@@ -35,6 +35,15 @@ export default defineContentConfig({
       })
     }),
 
+    accomplishments: defineCollection({
+      type: 'data',
+      source: 'accomplishments/**.json',
+      schema: z.object({
+        description: z.string(),
+        icon: z.string()
+      })
+    }),
+
     certificates: defineCollection({
       type: 'data',
       source: 'certificates/**.json',
