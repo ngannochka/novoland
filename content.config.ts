@@ -35,6 +35,14 @@ export default defineContentConfig({
       })
     }),
 
+    about: defineCollection({
+      type: 'data',
+      source: 'about/**.json',
+      schema: z.object({
+        description: z.string(),
+      })
+    }),
+
     partners: defineCollection({
       type: 'data',
       source: 'partners/**.json',
