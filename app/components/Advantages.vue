@@ -1,36 +1,34 @@
 <script setup lang="ts">
-const advantages = [
-  {
-    title: 'Полный спектр услуг',
-    description: 'Мы предоставляем полный спектр услуг — от разработки продукта и розлива до доставки готовой продукции клиенту...',
-    icon: 'lucide:layers'
-  },
-  {
-    title: 'Многоформатная линейка упаковки',
-    description: 'Пластиковые ампулы, стрип-монодозы, тубы, флаконы...',
-    icon: 'lucide:package-check'
-  },
-  {
-    title: 'Широкий технологический профиль',
-    description: 'Наше производство позволяет работать с продуктами различной консистенции...',
-    icon: 'lucide:beaker'
-  },
-  {
-    title: 'Преимущество пластиковых ампул и монодоз',
-    description: 'Возможность мелкого дозирования от 1 мл, простота вскрытия...',
-    icon: 'lucide:test-tube-diagonal'
-  },
-  {
-    title: 'Система менеджмента',
-    description: 'Производство соответствует требованиям системы менеджмента безопасности...',
-    icon: 'lucide:user-check-2'
-  },
-  {
-    title: 'Логистика',
-    description: 'Выгодное географическое расположение производства обеспечивает...',
-    icon: 'lucide:truck'
-  },
-]
+import { gsap } from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+
+gsap.registerPlugin(ScrollTrigger)
+
+const { data: advantages } = await useAsyncData('advantages', () =>
+  queryCollection('advantages')
+    .all()
+)
+
+onMounted(() => {
+  const animation = {
+    autoAlpha: 0,
+    duration: 0.3,
+    scale: 0.95,
+    y: 40,
+    ease: 'expo.out',
+  }
+
+  gsap.timeline({
+    scrollTrigger: {
+      trigger: '#advantages',
+      start: 'top 80%',
+      end: 'bottom 60%',
+      toggleActions: 'play none none reverse',
+    }
+  })
+    .from('.advantages .advantages__title', animation)
+    .from('.advantage', { ...animation, stagger: 0.3 }, '>-0.15')
+})
 </script>
 
 <template>
@@ -38,7 +36,7 @@ const advantages = [
     id="advantages"
     title="Наши преимущества"
     :ui="{
-      title: 'font-serif text-left text-[#28445C]',
+      title: 'advantages__title font-serif text-left text-[#28445C]',
     }"
   >
     <UPageGrid>
@@ -53,6 +51,7 @@ const advantages = [
           title: 'font-sans',
           description: 'font-sans text-white',
         }"
+        class="advantage"
       />
     </UPageGrid>
   </UPageSection>

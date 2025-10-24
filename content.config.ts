@@ -35,6 +35,16 @@ export default defineContentConfig({
       })
     }),
 
+    advantages: defineCollection({
+      type: 'data',
+      source: 'advantages/**.json',
+      schema: z.object({
+        title: z.string(),
+        description: z.string(),
+        icon: z.string(),
+      })
+    }),
+
     about: defineCollection({
       type: 'data',
       source: 'about/**.json',
