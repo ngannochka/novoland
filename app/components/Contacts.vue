@@ -56,7 +56,7 @@ onMounted(async () => {
 
         <UPageList class="gap-5">
           <UPageCard
-            v-for="({ title, description, to }, index) in contacts?.cards"
+            v-for="({ title, description, to }, index) in contacts"
             :key="index"
             :title
             :description

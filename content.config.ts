@@ -77,7 +77,7 @@ export default defineContentConfig({
 
     contacts: defineCollection({
       type: 'data',
-      source: 'contacts/*.json',
+      source: 'contacts/**.json',
       schema: z.array(
         z.object({
           title: z.string(),
