@@ -12,7 +12,7 @@ const { data: certificates } = await useAsyncData('certificates', () =>
 onMounted(() => {
   const animation = {
     autoAlpha: 0,
-    duration: 0.6,
+    duration: 0.3,
     scale: 0.95,
     y: 40,
     ease: 'expo.out',

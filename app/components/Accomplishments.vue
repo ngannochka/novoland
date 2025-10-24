@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { gsap } from 'gsap'
-
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 gsap.registerPlugin(ScrollTrigger)
@@ -33,27 +32,24 @@ const accomplishments = [
 ]
 
 onMounted(() => {
-  const cards = document.querySelectorAll('.accomplishment')
+  const animation = {
+    autoAlpha: 0,
+    duration: 0.3,
+    scale: 0.95,
+    y: 40,
+    ease: 'expo.out',
+  }
 
-  cards.forEach((card, i) => {
-    gsap.fromTo(
-      card,
-      { opacity: 0, y: 25, filter: 'blur(8px)' },
-      {
-        opacity: 1,
-        y: 0,
-        filter: 'blur(0px)',
-        duration: 0.7, // быстрее
-        ease: 'power3.out',
-        delay: i * 0.08, // быстрее каскад
-        scrollTrigger: {
-          trigger: card,
-          start: 'top 85%',
-          toggleActions: 'play none none reverse',
-        },
-      }
-    )
+  gsap.timeline({
+    scrollTrigger: {
+      trigger: '#accomplishments',
+      start: 'top 80%',
+      end: 'bottom 60%',
+      toggleActions: 'play none none reverse',
+    }
   })
+    .from('.accomplishments .accomplishments__title', animation)
+    .from('.accomplishment', { ...animation, stagger: 0.3 }, '>-0.2')
 })
 </script>
 
@@ -62,7 +58,7 @@ onMounted(() => {
     id="accomplishments"
     title="Достижения"
     :ui="{
-      title: 'font-serif text-left text-[#28445C]',
+      title: 'accomplishments__title font-serif text-left text-[#28445C]',
     }"
     class="accomplishments"
   >
