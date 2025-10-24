@@ -50,6 +50,17 @@ export default defineContentConfig({
       schema: z.object({
         src: z.string()
       })
+    }),
+
+    news: defineCollection({
+      type: 'data',
+      source: 'news/**.json',
+      schema: z.object({
+        title: z.string(),
+        description: z.string(),
+        image: z.string(),
+        date: z.string(),
+      })
     })
   }
 })

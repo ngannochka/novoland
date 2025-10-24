@@ -1,42 +1,34 @@
 <script setup lang="ts">
-const posts = [
-  {
-    title: '1Новая автоматическая линия — быстрее и точнее!',
-    description: 'Запущена новая линия для фасовка в стики с возможность розлива гелевых,желеобразных составов. ',
-    image: 'https://s3.twcstorage.ru/f2f0a35f-e48e7736-24c2-4274-88c1-0854b97bbed7/n.png',
-    date: '30 декабря 2024'
-  },
-{
-    title: '2Новая автоматическая линия — быстрее и точнее!',
-    description: 'Запущена новая линия для фасовка в стики с возможность розлива гелевых,желеобразных составов. ',
-    image: 'https://s3.twcstorage.ru/f2f0a35f-e48e7736-24c2-4274-88c1-0854b97bbed7/n.png',
-    date: '30 декабря 2024'
-  },
-{
-    title: '3Новая автоматическая линия — быстрее и точнее!',
-    description: 'Запущена новая линия для фасовка в стики с возможность розлива гелевых,желеобразных составов. ',
-    image: 'https://s3.twcstorage.ru/f2f0a35f-e48e7736-24c2-4274-88c1-0854b97bbed7/n.png',
-    date: '30 декабря 2024'
-  },
-{
-    title: '4Новая автоматическая линия — быстрее и точнее!',
-    description: 'Запущена новая линия для фасовка в стики с возможность розлива гелевых,желеобразных составов. ',
-    image: 'https://s3.twcstorage.ru/f2f0a35f-e48e7736-24c2-4274-88c1-0854b97bbed7/n.png',
-    date: '30 декабря 2024'
-  },
-{
-    title: '5Новая автоматическая линия — быстрее и точнее!',
-    description: 'Запущена новая линия для фасовка в стики с возможность розлива гелевых,желеобразных составов. ',
-    image: 'https://s3.twcstorage.ru/f2f0a35f-e48e7736-24c2-4274-88c1-0854b97bbed7/n.png',
-    date: '30 декабря 2024'
-  },
-{
-    title: '6Новая автоматическая линия — быстрее и точнее!',
-    description: 'Запущена новая линия для фасовка в стики с возможность розлива гелевых,желеобразных составов. ',
-    image: 'https://s3.twcstorage.ru/f2f0a35f-e48e7736-24c2-4274-88c1-0854b97bbed7/n.png',
-    date: '30 декабря 2024'
-  },
-]
+import { gsap } from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+
+gsap.registerPlugin(ScrollTrigger)
+
+const { data: news } = await useAsyncData('news', () =>
+  queryCollection('news')
+    .all()
+)
+
+onMounted(() => {
+  const animation = {
+    autoAlpha: 0,
+    duration: 0.3,
+    scale: 0.95,
+    y: 40,
+    ease: 'expo.out',
+  }
+
+  gsap.timeline({
+    scrollTrigger: {
+      trigger: '#news',
+      start: 'top 80%',
+      end: 'bottom 60%',
+      toggleActions: 'play none none reverse',
+    }
+  })
+    .from('.news .news__title', animation)
+    .from('.news .news__carousel', animation, '>-0.15')
+})
 </script>
 
 <template>
@@ -44,18 +36,19 @@ const posts = [
     id="news"
     title="Новости"
     :ui="{
-      title: 'font-serif text-left text-[#28445C]',
+      title: 'news__title font-serif text-left text-[#28445C]',
     }"
+    class="news"
   >
     <UCarousel
       v-slot="{ item }"
       dots
-      :items="posts"
+      :items="news"
       :ui="{
         item: 'sm:basis-1/2 md:basis-1/2 lg:basis-1/3',
         dot: 'data-[state=active]:bg-[#28445C]'
       }"
-      class="w-full max-w-sm mx-auto sm:max-w-xl md:max-w-2xl lg:max-w-4xl xl:max-w-6xl"
+      class="news__carousel w-full max-w-sm mx-auto sm:max-w-xl md:max-w-2xl lg:max-w-4xl xl:max-w-6xl"
     >
       <UBlogPost
         variant="ghost"
