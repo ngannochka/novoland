@@ -127,8 +127,8 @@ const toggleCallbackModal = (value: boolean) => {
   <Header @openCallbackModal="toggleCallbackModal" />
   <UMain>
     <Hero @openCallbackModal="toggleCallbackModal" />
-
     <Services />
+
     <Catalog @toggle-callback-modal="toggleCallbackModal" class="section" />
 
     <Advantages class="section" />
