@@ -40,6 +40,9 @@ export default defineContentConfig({
       source: 'catalog/**.json',
       schema: z.object({
         title: z.string(),
+        filters: z.object({
+          volumes: z.array(z.number()),
+        }),
         items: z.array(z.object({
           image: z.string(),
           title: z.string(),

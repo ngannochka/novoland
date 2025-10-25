@@ -11,6 +11,10 @@ const emit = defineEmits<{
 const handleCallbackButtonClick = () => {
   emit('openCallbackModal', true)
 }
+
+// select
+const items = ref(['Backlog', 'Todo', 'In Progress', 'Done'])
+const value = ref(['Backlog', 'Todo'])
 </script>
 
 <template>
@@ -21,6 +25,14 @@ const handleCallbackButtonClick = () => {
       title: 'font-serif text-left text-[#28445C]',
     }"
   >
+    <div class="flex gap-2">
+      <USelect v-model="value" multiple :items="items" class="w-48" />
+
+<!--      <USelect v-model="value" multiple :items="items" class="w-48" />-->
+
+<!--      <USelect v-model="value" multiple :items="items" class="w-48" />-->
+    </div>
+
     <UPageGrid>
       <template
         v-for="({ image, title, volume, material, filmColor }, index) in catalog?.items"
