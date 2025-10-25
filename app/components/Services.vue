@@ -55,14 +55,17 @@ onMounted(() => {
           label: service.callbackButton
         }"
         :ui="{
-          root: `rounded-2xl bg-[url(/service-${index + 1}.svg)] bg-cover bg-center bg-no-repeat ${index + 1 === 1 ? 'bg-black/50' : 'bg-black/60'} bg-blend-multiply`,
+          root: `rounded-2xl bg-cover bg-center bg-no-repeat bg-black/50 bg-blend-multiply`,
           title: 'font-sans text-white',
           description: 'font-sans text-white/90',
           featureTitle: 'font-sans text-white',
           featureIcon: 'text-white',
-          button: 'rounded-full bg-white font-sans text-[#28445C]',
+          button: 'rounded-full bg-white font-sans text-[#28445C] hover:bg-[#D9D9D9] focus:bg-[#F2F2F2] active:bg-[#F2F2F2]',
         }"
         class="services__card"
+        :style="{
+          backgroundImage: `url(${service.backgroundImage})`
+        }"
       />
     </UPricingPlans>
   </UPageSection>

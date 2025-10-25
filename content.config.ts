@@ -26,6 +26,7 @@ export default defineContentConfig({
       schema: z.object({
         description: z.string(),
         cards: z.array(z.object({
+          backgroundImage: z.string(),
           title: z.string(),
           description: z.string(),
           features: z.array(z.string()),
