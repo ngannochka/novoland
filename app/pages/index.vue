@@ -132,7 +132,7 @@ const toggleCallbackModal = (value: boolean) => {
     <Hero @openCallbackModal="toggleCallbackModal" />
     <Services />
 
-    <Catalog @toggle-callback-modal="toggleCallbackModal" class="section" />
+    <Catalog @openCallbackModal="toggleCallbackModal" class="section" />
 
     <Advantages class="section" />
     <About class="section" />
@@ -143,9 +143,7 @@ const toggleCallbackModal = (value: boolean) => {
     <Contacts class="section" />
   </UMain>
   <Footer @openCallbackModal="toggleCallbackModal" />
-
   <CallbackModal :open="modal" @toggle-callback-modal="toggleCallbackModal"/>
-
 </template>
 
 <style scoped></style>

@@ -35,6 +35,21 @@ export default defineContentConfig({
       })
     }),
 
+    catalog: defineCollection({
+      type: 'data',
+      source: 'catalog/**.json',
+      schema: z.object({
+        title: z.string(),
+        items: z.array(z.object({
+          image: z.string(),
+          title: z.string(),
+          volume: z.string(),
+          material: z.string(),
+          filmColor: z.string()
+        }))
+      })
+    }),
+
     advantages: defineCollection({
       type: 'data',
       source: 'advantages/**.json',
