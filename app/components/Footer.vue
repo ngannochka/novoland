@@ -95,12 +95,12 @@ const currentYear = new Date().getFullYear()
         <NuxtImg src="https://s3.twcstorage.ru/f2f0a35f-e48e7736-24c2-4274-88c1-0854b97bbed7/footer-logo.svg" class="h-7 mb-4 lg:m-0" />
       </NuxtLink>
 
-      <NuxtLink :to="footer?.email.to" class="flex items-center gap-1 font-sans text-white">
+      <NuxtLink :to="footer?.email.to" class="flex items-center gap-1 font-sans text-white hover:text-[#D9D9D9] focus:text-[#F2F2F2] active:text-[#F2F2F2]">
         <UIcon name="ic:outline-email" class="size-5" />
         {{ footer?.email.text  }}
       </NuxtLink>
 
-      <NuxtLink :to="footer?.number.to" class="flex items-center gap-1 font-sans text-white ">
+      <NuxtLink :to="footer?.number.to" class="flex items-center gap-1 font-sans text-white hover:text-[#D9D9D9] focus:text-[#F2F2F2] active:text-[#F2F2F2]">
         <UIcon name="ic:round-phone" class="size-5" />
         {{ footer?.number.text  }}
       </NuxtLink>
