@@ -12,8 +12,10 @@ const emit = defineEmits<{
   (e: 'toggleCallbackModal', value: boolean): void
 }>()
 
+const agreement = ref<boolean>(false)
+
 const schema = z.object({
-  name: z.string('*обязательное поле').min(2, 'Имя должно содержать хотя бы 2 символа.'),
+  name: z.string('*обязательное поле').min(2, 'Имя не валидно.'),
   phone: z.string('*обязательное поле').min(2, 'Номер телефона не валиден.'),
   email: z.email('*обязательное поле')
 })
@@ -36,7 +38,15 @@ const onSubmit = async (event: FormSubmitEvent<Schema>) => {
   toast.add({
     title: 'Заявка получена!',
     description: 'Мы свяжемся с Вами в ближайшее время.',
-    color: 'neutral'
+    ui: {
+      title: 'font-serif text-[#28445C]',
+      description: 'font-sans text-[#28445C]',
+    },
+    progress: {
+      ui: {
+        indicator: 'bg-[#28445C]'
+      }
+    }
   })
 
   emit('toggleCallbackModal', false)
@@ -50,22 +60,24 @@ const onSubmit = async (event: FormSubmitEvent<Schema>) => {
     title="Заявка на обратный звонок"
     description="Пожалуйста, заполните форму и мы постараемся связаться с вами как можно скорее."
     :ui="{
+      body: '',
       title: 'font-serif text-[#28445C]',
-      description: 'font-sans text-[#212B23]'
+      description: 'font-sans text-[#212B23]',
     }"
   >
     <template #body>
       <UForm
         :schema="schema"
         :state="state"
-        class="space-y-4"
+        class="space-y-4 bg-[url(/modal/bgi.svg)] bg-no-repeat bg-top-right bg-size-[110px_auto]"
         @submit="onSubmit"
       >
         <UFormField
           label="Ваше имя"
           name="name"
           :ui="{
-            label: 'font-sans'
+            label: 'font-sans',
+            error: 'font-sans'
           }"
         >
           <UInput
@@ -73,7 +85,7 @@ const onSubmit = async (event: FormSubmitEvent<Schema>) => {
             placeholder="Иван Иванов"
             color="neutral"
             :ui="{
-              base: 'w-full rounded-full'
+              base: 'w-full rounded-full font-sans placeholder:font-sans'
             }"
           />
         </UFormField>
@@ -82,7 +94,8 @@ const onSubmit = async (event: FormSubmitEvent<Schema>) => {
           label="Номер телефона"
           name="phone"
           :ui="{
-            label: 'font-sans'
+            label: 'font-sans',
+            error: 'font-sans'
           }"
         >
           <UInput
@@ -91,7 +104,7 @@ const onSubmit = async (event: FormSubmitEvent<Schema>) => {
             color="neutral"
             v-maska="'+7 ### ### ## ##'"
             :ui="{
-              base: 'w-full rounded-full'
+              base: 'w-full rounded-full font-sans placeholder:font-sans'
             }"
           />
         </UFormField>
@@ -100,7 +113,8 @@ const onSubmit = async (event: FormSubmitEvent<Schema>) => {
           label="Email"
           name="email"
           :ui="{
-            label: 'font-sans'
+            label: 'font-sans',
+            error: 'font-sans'
           }"
         >
           <UInput
@@ -108,12 +122,20 @@ const onSubmit = async (event: FormSubmitEvent<Schema>) => {
             placeholder="ivanivanov@gmail.com"
             color="neutral"
             :ui="{
-              base: 'rounded-full'
+              base: 'rounded-full font-sans placeholder:font-sans'
             }"
           />
         </UFormField>
 
-        <UButton type="submit" class="rounded-full font-sans bg-[#2A4A5D] hover:bg-[#223C52] focus:bg-[#223C52] active:bg-[#1D3448]">
+        <UCheckbox
+          v-model="agreement"
+          label="Я согласен(а) на обработку персональных данных"
+          :ui="{
+            indicator: 'bg-[#2A4A5D]'
+          }"
+        />
+
+        <UButton :disabled="!state.name || !state.phone || !state.email || !agreement" type="submit" class="rounded-full font-sans disabled:bg-[#6E726E] bg-[#2A4A5D] hover:bg-[#223C52] focus:bg-[#223C52] active:bg-[#1D3448]">
           Отправить
         </UButton>
       </UForm>

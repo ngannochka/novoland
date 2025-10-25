@@ -1,4 +1,7 @@
 <script setup lang="ts">
+useHead({
+  title: 'НовоЛэнд'
+})
 // import { gsap } from 'gsap'
 // import { ScrollTrigger } from 'gsap/ScrollTrigger'
 //
