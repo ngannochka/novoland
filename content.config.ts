@@ -20,6 +20,20 @@ export default defineContentConfig({
       })
     }),
 
+    services: defineCollection({
+      type: 'data',
+      source: 'services/**.json',
+      schema: z.object({
+        description: z.string(),
+        cards: z.array(z.object({
+          title: z.string(),
+          description: z.string(),
+          features: z.array(z.string()),
+          callbackButton: z.string()
+        })),
+      })
+    }),
+
     advantages: defineCollection({
       type: 'data',
       source: 'advantages/**.json',
