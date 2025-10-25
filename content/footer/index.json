@@ -1,0 +1,11 @@
+{
+  "email": {
+    "text": "info@novoland54.ru",
+    "to": "mailto:info@novoland54.ru"
+  },
+  "number": {
+    "text": "8 800 444 79 42",
+    "to": "tel:+78004447942"
+  },
+  "callbackButton": "Заказать звонок"
+}

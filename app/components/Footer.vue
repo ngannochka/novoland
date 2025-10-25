@@ -1,6 +1,19 @@
 <script setup lang="ts">
 import type { NavigationMenuItem } from '@nuxt/ui'
 
+const { data: footer } = await useAsyncData('footer', () =>
+  queryCollection('footer')
+    .first()
+)
+
+const emit = defineEmits<{
+  (e: 'openCallbackModal', value: true): void
+}>()
+
+const handleCallbackButtonClick = () => {
+  emit('openCallbackModal', true)
+}
+
 const items: NavigationMenuItem[] = [
   {
     label: 'Каталог услуг',
@@ -35,6 +48,8 @@ const items: NavigationMenuItem[] = [
     to: '#contacts',
   },
 ]
+
+const currentYear = new Date().getFullYear()
 </script>
 
 <template>
@@ -47,14 +62,21 @@ const items: NavigationMenuItem[] = [
     }"
   >
     <template #left>
-      <p class="text-white">
-        © 2022, ООО "НОВОЛЭНД"
+      <UButton
+        :label="footer?.callbackButton"
+        size="lg"
+        class="mb-4 bg-white font-sans text-[#28445C] hover:bg-[#D9D9D9] focus:bg-[#F2F2F2] active:bg-[#F2F2F2] lg:hidden"
+        @click="handleCallbackButtonClick"
+      />
+
+      <p class="font-sans text-white">
+        ООО "НОВОЛЭНД"
       </p>
-      <p class="text-white">
+      <p class="font-sans text-white">
         ОГРН 1195476063507
       </p>
-      <p class="text-white">
-        Все права защищены
+      <p class="flex items-center gap-1 font-sans text-white">
+        <UIcon name="lucide:copyright" class="size-3" /> {{ currentYear }}
       </p>
     </template>
 
@@ -70,17 +92,17 @@ const items: NavigationMenuItem[] = [
 
     <template #right>
       <NuxtLink to="/">
-        <NuxtImg src="https://s3.twcstorage.ru/f2f0a35f-e48e7736-24c2-4274-88c1-0854b97bbed7/footer-logo.svg" class="h-7" />
+        <NuxtImg src="https://s3.twcstorage.ru/f2f0a35f-e48e7736-24c2-4274-88c1-0854b97bbed7/footer-logo.svg" class="h-7 mb-4 lg:m-0" />
       </NuxtLink>
 
-      <NuxtLink to="mailto:info@nvlnd.ru" class="flex items-center gap-1 text-white">
+      <NuxtLink :to="footer?.email.to" class="flex items-center gap-1 font-sans text-white">
         <UIcon name="ic:outline-email" class="size-5" />
-        info@nvlnd.ru
+        {{ footer?.email.text  }}
       </NuxtLink>
 
-      <NuxtLink to="tel:+78004447942" class="flex items-center gap-1 text-white ">
+      <NuxtLink :to="footer?.number.to" class="flex items-center gap-1 font-sans text-white ">
         <UIcon name="ic:round-phone" class="size-5" />
-        8 800 444 79 42
+        {{ footer?.number.text  }}
       </NuxtLink>
     </template>
   </UFooter>

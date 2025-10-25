@@ -98,5 +98,21 @@ export default defineContentConfig({
         to: z.string().optional(),
       })
     }),
+
+    footer: defineCollection({
+      type: 'data',
+      source: 'footer/**.json',
+      schema: z.object({
+        email: z.object({
+          text: z.string(),
+          to: z.string()
+        }),
+        number: z.object({
+          text: z.string(),
+          to: z.string()
+        }),
+        callbackButton: z.string()
+      })
+    }),
   }
 })

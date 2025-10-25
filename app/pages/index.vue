@@ -139,8 +139,8 @@ const toggleCallbackModal = (value: boolean) => {
     <News class="section" />
     <Contacts class="section" />
   </UMain>
+  <Footer @openCallbackModal="toggleCallbackModal" />
 
-  <Footer class="section"/>
   <CallbackModal :open="modal" @toggle-callback-modal="toggleCallbackModal"/>
 
 </template>
