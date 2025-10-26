@@ -118,14 +118,21 @@ onMounted(() => {
           multiple
           placeholder="Объем"
           :items="volumesSelectItems"
+          class="w-30"
+          :ui="{
+            base: 'font-sans text-primary',
+          }"
         />
 
-<!--        class="w-30"-->
         <USelect
           v-model="materialsSelectValue"
           multiple
           placeholder="Материал"
           :items="materialsSelectItems"
+          class="w-30"
+          :ui="{
+            base: 'font-sans text-primary',
+          }"
         />
 
         <USelect
@@ -133,6 +140,10 @@ onMounted(() => {
           multiple
           placeholder="Продукт"
           :items="productsSelectItems"
+          class="w-30"
+          :ui="{
+            base: 'font-sans text-primary',
+          }"
         />
       </div>
     </div>
