@@ -6,7 +6,7 @@ gsap.registerPlugin(ScrollTrigger)
 
 const { data: advantages } = await useAsyncData('advantages', () =>
   queryCollection('advantages')
-    .all()
+    .first()
 )
 
 onMounted(() => {
@@ -26,8 +26,8 @@ onMounted(() => {
       toggleActions: 'play none none reverse',
     }
   })
-    .from('.advantages .advantages__title', animation)
-    .from('.advantage', { ...animation, stagger: 0.3 }, '>-0.15')
+    .from('.advantages', animation)
+    // .from('.advantage', { ...animation, stagger: 0.3 }, '>-0.15')
 })
 </script>
 
@@ -38,10 +38,11 @@ onMounted(() => {
     :ui="{
       title: 'advantages__title font-serif text-left text-[#28445C]',
     }"
+    class="advantages"
   >
     <UPageGrid>
       <UPageCard
-        v-for="(advantage, index) in advantages"
+        v-for="(advantage, index) in advantages?.items"
         :key="index"
         v-bind="advantage"
         variant="solid"

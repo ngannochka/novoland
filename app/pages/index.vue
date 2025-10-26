@@ -21,14 +21,14 @@ const toggleCallbackModal = (value: boolean) => {
   <UMain>
     <Hero @openCallbackModal="toggleCallbackModal" />
     <Services />
-    <Catalog @openCallbackModal="toggleCallbackModal" class="section" />
-    <Advantages class="section" />
-    <About class="section" />
-    <Partners class="section" />
-    <Accomplishments class="section" />
-    <Certificates class="section" />
-    <News class="section" />
-    <Contacts class="section" />
+    <Catalog @openCallbackModal="toggleCallbackModal" />
+    <Advantages />
+    <About />
+    <Partners />
+    <Accomplishments />
+    <Certificates />
+    <News />
+    <Contacts />
   </UMain>
   <Footer @openCallbackModal="toggleCallbackModal" />
   <CallbackModal :open="modal" @toggle-callback-modal="toggleCallbackModal"/>

@@ -1,11 +1,14 @@
 {
-  "email": {
-    "text": "info@novoland54.ru",
-    "to": "mailto:info@novoland54.ru"
-  },
-  "number": {
-    "text": "8 800 444 79 42",
-    "to": "tel:+78004447942"
-  },
-  "callbackButton": "Заказать звонок"
+  "items": [
+    {
+      "icon": "ic:outline-email",
+      "text": "info@novoland54.ru",
+      "link": "mailto:info@novoland54.ru"
+    },
+    {
+      "icon": "ic:round-phone",
+      "text": "8 800 444 79 42",
+      "link": "tel:+78004447942"
+    }
+  ]
 }

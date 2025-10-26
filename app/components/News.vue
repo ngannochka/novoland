@@ -6,7 +6,7 @@ gsap.registerPlugin(ScrollTrigger)
 
 const { data: news } = await useAsyncData('news', () =>
   queryCollection('news')
-    .all()
+    .first()
 )
 
 onMounted(() => {
@@ -26,8 +26,8 @@ onMounted(() => {
       toggleActions: 'play none none reverse',
     }
   })
-    .from('.news .news__title', animation)
-    .from('.news .news__carousel', animation, '>-0.15')
+    .from('.news', animation)
+    // .from('.news .news__carousel', animation, '>-0.15')
 })
 </script>
 
@@ -43,7 +43,7 @@ onMounted(() => {
     <UCarousel
       v-slot="{ item }"
       dots
-      :items="news"
+      :items="news?.items"
       :ui="{
         item: 'sm:basis-1/2 md:basis-1/2 lg:basis-1/3',
         dot: 'data-[state=active]:bg-[#28445C]'

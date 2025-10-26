@@ -65,8 +65,8 @@ const handleCallbackButtonClick = () => {
   >
     <template #title>
       <NuxtImg
-        src="/headerLogo.svg"
-        alt="Логотип компании Novoland"
+        src="/header/headerLogo.svg"
+        alt="Логотип компании НовоЛэнд"
         class="h-8"
       />
     </template>

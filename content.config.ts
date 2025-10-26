@@ -5,7 +5,7 @@ export default defineContentConfig({
   collections: {
     header: defineCollection({
       type: 'data',
-      source: 'header/*.json',
+      source: 'header/**.json',
       schema: z.object({
         callbackButton: z.string(),
       })
@@ -13,7 +13,7 @@ export default defineContentConfig({
 
     hero: defineCollection({
       type: 'data',
-      source: 'hero/*.json',
+      source: 'hero/**.json',
       schema: z.object({
         description: z.string(),
         callbackButton: z.string(),
@@ -59,9 +59,11 @@ export default defineContentConfig({
       type: 'data',
       source: 'advantages/**.json',
       schema: z.object({
-        title: z.string(),
-        description: z.string(),
-        icon: z.string(),
+        items: z.array(z.object({
+          icon: z.string(),
+          title: z.string(),
+          description: z.string(),
+        }))
       })
     }),
 
@@ -77,8 +79,10 @@ export default defineContentConfig({
       type: 'data',
       source: 'partners/**.json',
       schema: z.object({
-        src: z.string(),
-        to: z.string()
+        items: z.array(z.object({
+          image: z.string(),
+          link: z.string()
+        }))
       })
     }),
 
@@ -86,8 +90,10 @@ export default defineContentConfig({
       type: 'data',
       source: 'accomplishments/**.json',
       schema: z.object({
-        description: z.string(),
-        icon: z.string()
+        items: z.array(z.object({
+          icon: z.string(),
+          description: z.string()
+        }))
       })
     }),
 
@@ -95,7 +101,9 @@ export default defineContentConfig({
       type: 'data',
       source: 'certificates/**.json',
       schema: z.object({
-        src: z.string()
+        items: z.array(z.object({
+          image: z.string()
+        }))
       })
     }),
 
@@ -103,10 +111,12 @@ export default defineContentConfig({
       type: 'data',
       source: 'news/**.json',
       schema: z.object({
-        title: z.string(),
-        description: z.string(),
-        image: z.string(),
-        date: z.string(),
+        items: z.array(z.object({
+          image: z.string(),
+          date: z.string(),
+          title: z.string(),
+          description: z.string(),
+        }))
       })
     }),
 
@@ -114,9 +124,11 @@ export default defineContentConfig({
       type: 'data',
       source: 'contacts/**.json',
       schema: z.object({
-        title: z.string(),
-        description: z.string(),
-        to: z.string().optional(),
+        items: z.array(z.object({
+          title: z.string(),
+          description: z.string(),
+          link: z.string().optional(),
+        }))
       })
     }),
 
@@ -124,15 +136,11 @@ export default defineContentConfig({
       type: 'data',
       source: 'footer/**.json',
       schema: z.object({
-        email: z.object({
+        items: z.array(z.object({
+          icon: z.string(),
           text: z.string(),
-          to: z.string()
-        }),
-        number: z.object({
-          text: z.string(),
-          to: z.string()
-        }),
-        callbackButton: z.string()
+          link: z.string()
+        }))
       })
     }),
   }

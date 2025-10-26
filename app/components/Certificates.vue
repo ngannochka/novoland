@@ -6,7 +6,7 @@ gsap.registerPlugin(ScrollTrigger)
 
 const { data: certificates } = await useAsyncData('certificates', () =>
   queryCollection('certificates')
-    .all()
+    .first()
 )
 
 onMounted(() => {
@@ -26,8 +26,8 @@ onMounted(() => {
       toggleActions: 'play none none reverse',
     }
   })
-    .from('.certificates .certificates__title', animation)
-    .from('.certificates .certificates__carousel', animation, '>-0.15')
+    .from('.certificates', animation)
+    // .from('.certificates .certificates__carousel', animation, '>-0.15')
 })
 </script>
 
@@ -43,14 +43,14 @@ onMounted(() => {
     <UCarousel
       v-slot="{ item }"
       dots
-      :items="certificates"
+      :items="certificates?.items"
       :ui="{
         item: 'sm:basis-1/2 md:basis-1/2 lg:basis-1/3',
         dot: 'data-[state=active]:bg-[#28445C]'
       }"
       class="certificates__carousel w-full max-w-sm mx-auto sm:max-w-xl md:max-w-2xl lg:max-w-4xl xl:max-w-6xl"
     >
-      <NuxtImg :src="item.src" class="rounded-lg" />
+      <NuxtImg :src="item.image" class="rounded-lg" />
     </UCarousel>
   </UPageSection>
 </template>

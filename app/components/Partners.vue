@@ -6,7 +6,7 @@ gsap.registerPlugin(ScrollTrigger)
 
 const { data: partners } = await useAsyncData('partners', () =>
   queryCollection('partners')
-    .all()
+    .first()
 )
 
 onMounted(() => {
@@ -26,8 +26,8 @@ onMounted(() => {
       toggleActions: 'play none none reverse',
     }
   })
-    .from('.partners .partners__title', animation)
-    .from('.partners .partners__marquee', animation, '>-0.15')
+    .from('.partners', animation)
+    // .from('.partners .partners__marquee', animation, '>-0.15')
 })
 </script>
 
@@ -41,8 +41,8 @@ onMounted(() => {
     class="partners"
   >
     <UMarquee class="partners__marquee">
-      <NuxtLink v-for="(partner, index) in partners" :key="index" :to="partner.to" target="_blank">
-        <NuxtImg :src="partner.src" />
+      <NuxtLink v-for="(partner, index) in partners?.items" :key="index" :to="partner.link" target="_blank">
+        <NuxtImg :src="partner.image" />
       </NuxtLink>
     </UMarquee>
   </UPageSection>

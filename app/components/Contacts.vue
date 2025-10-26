@@ -6,7 +6,7 @@ gsap.registerPlugin(ScrollTrigger)
 
 const { data: contacts } = await useAsyncData('contacts', () =>
   queryCollection('contacts')
-    .all()
+    .first()
 )
 
 onMounted(async () => {
@@ -20,7 +20,7 @@ onMounted(async () => {
     ease: 'expo.out',
   }
 
-  const tl = gsap.timeline({
+  gsap.timeline({
     scrollTrigger: {
       trigger: '#contacts',
       start: 'top 80%',
@@ -28,8 +28,8 @@ onMounted(async () => {
       toggleActions: 'play none none reverse',
     }
   })
-    .from('.contacts .contacts__title', animation)
-    .from('.contacts .contacts__body', animation, '>-0.15')
+    .from('.contacts', animation)
+    // .from('.contacts .contacts__body', animation, '>-0.15')
 })
 </script>
 
@@ -56,11 +56,11 @@ onMounted(async () => {
 
         <UPageList class="gap-5">
           <UPageCard
-            v-for="({ title, description, to }, index) in contacts"
+            v-for="({ title, description, link }, index) in contacts?.items"
             :key="index"
             :title
             :description
-            :to
+            :to="link"
             variant="naked"
             :ui="{
               title: 'font-serif text-[#28445C]',

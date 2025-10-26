@@ -6,7 +6,7 @@ gsap.registerPlugin(ScrollTrigger)
 
 const { data: accomplishments } = await useAsyncData('accomplishments', () =>
   queryCollection('accomplishments')
-    .all()
+    .first()
 )
 
 onMounted(() => {
@@ -26,8 +26,8 @@ onMounted(() => {
       toggleActions: 'play none none reverse',
     }
   })
-    .from('.accomplishments .accomplishments__title', animation)
-    .from('.accomplishment', { ...animation, stagger: 0.3 }, '>-0.15')
+    .from('.accomplishments', animation)
+    // .from('.accomplishment', { ...animation, stagger: 0.3 }, '>-0.15')
 })
 </script>
 
@@ -42,7 +42,7 @@ onMounted(() => {
   >
     <UPageGrid>
       <UPageCard
-        v-for="(accomplishment, index) in accomplishments"
+        v-for="(accomplishment, index) in accomplishments?.items"
         :key="index"
         v-bind="accomplishment"
         variant="solid"

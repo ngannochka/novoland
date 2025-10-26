@@ -26,8 +26,8 @@ onMounted(() => {
       toggleActions: 'play none none reverse',
     }
   })
-    .from('.about .about__title', animation)
-    .from('.about .about__description', animation, '>-0.15')
+    .from('.about', animation)
+    // .from('.about .about__description', animation, '>-0.15')
 })
 </script>
 
@@ -37,8 +37,8 @@ onMounted(() => {
     title="О компании"
     :description="about?.description"
     :ui="{
-      root: 'bg-[url(/aboutTransparentBgi.svg)] bg-no-repeat bg-right md:bg-none',
-      wrapper: 'md:bg-[url(/aboutBgi.svg)] md:bg-no-repeat md:bg-[90%_center]',
+      root: 'bg-[url(/about/aboutTransparentBgi.svg)] bg-no-repeat bg-right md:bg-none',
+      wrapper: 'md:bg-[url(/about/aboutBgi.svg)] md:bg-no-repeat md:bg-[90%_center]',
       title: 'about__title text-left font-serif text-[#28445C]',
       description: 'about__description text-left font-sans text-[#28445C] md:max-w-md lg:max-w-lg xl:max-w-xl 2xl:max-w-2xl',
     }"

@@ -18,7 +18,7 @@ onMounted(() => {
     ease: 'expo.out',
   }
 
-  const tl = gsap.timeline({
+  gsap.timeline({
     scrollTrigger: {
       trigger: '#services',
       start: 'top 80%', // когда верх блока доходит до 80% экрана
@@ -27,9 +27,9 @@ onMounted(() => {
       // scrub: 1, // включи, если хочешь, чтобы шло плавно вместе со скроллом
     }
   })
-    .from('.services .services__title', animation)
-    .from('.services .services__description', animation, '>-0.15')
-    .from('.services .services__card', { ...animation, stagger: 0.3 }, '>')
+    .from('.services', animation)
+    // .from('.services .services__description', animation, '>-0.15')
+    // .from('.services .services__card', { ...animation, stagger: 0.3 }, '>')
 })
 </script>
 
