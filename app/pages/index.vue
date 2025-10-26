@@ -2,7 +2,10 @@
 useHead({
   title: 'НовоЛэнд',
   meta: [
-    { property: 'og:image', content: '/ogImage.png' }
+    { property: 'og:title', content: 'НовоЛэнд' },
+    { property: 'og:description', content: '«НовоЛэнд» — это современное производственное предприятие, специализирующееся на полном цикле от идеи и разработки рецептуры до упаковки' },
+    { property: 'og:image', content: '/ogImage.png' },
+    { property: 'og:url', content: 'https://ngannochka-novoland.nuxt.space/' },
   ]
 })
 // import { gsap } from 'gsap'
