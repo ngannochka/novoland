@@ -2,7 +2,7 @@
 useHead({
   title: 'НовоЛэнд',
   meta: [
-    { property: 'og:image', content: 'https://ngannochka-novoland.nuxt.space/ogImage.png' }
+    { property: 'og:image', content: '/ogImage.png' }
   ]
 })
 // import { gsap } from 'gsap'
