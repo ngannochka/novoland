@@ -5,3 +5,7 @@
   --font-sans: 'Inter', sans-serif;
   --font-serif: 'Unbounded', sans-serif;
 }
+
+:root {
+  --ui-primary: #28445C;
+}

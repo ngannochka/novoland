@@ -42,12 +42,14 @@ export default defineContentConfig({
         title: z.string(),
         filters: z.object({
           volumes: z.array(z.number()),
+          materials: z.array(z.string()),
+          products: z.array(z.string()),
         }),
         items: z.array(z.object({
           image: z.string(),
           title: z.string(),
-          volume: z.string(),
-          material: z.string(),
+          volumes: z.array(z.number()),
+          materials: z.array(z.string()),
           filmColor: z.string()
         }))
       })

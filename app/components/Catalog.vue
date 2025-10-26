@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import type { SelectItem } from '@nuxt/ui'
+
 const { data: catalog } = await useAsyncData('catalog', () =>
   queryCollection('catalog')
     .first()
@@ -12,9 +14,63 @@ const handleCallbackButtonClick = () => {
   emit('openCallbackModal', true)
 }
 
-// select
-const items = ref(['Backlog', 'Todo', 'In Progress', 'Done'])
-const value = ref(['Backlog', 'Todo'])
+const volumesSelectItems = computed<SelectItem[]>(() => {
+  const volumes = catalog.value?.filters.volumes ?? []
+
+  return volumes.map(volume => ({
+    label: `${volume} мл`,
+    value: volume
+  }))
+})
+const materialsSelectItems = ref(catalog.value?.filters.materials ?? [])
+const productsSelectItems = ref(catalog.value?.filters.products ?? [])
+
+const volumesSelectValue = ref<number[]>([])
+const materialsSelectValue = ref<string[]>([])
+const productsSelectValue = ref<string[]>([])
+
+const filteredCatalog = computed(() => {
+  return catalog.value?.items.filter(item => {
+    const matchesVolume =
+      volumesSelectValue.value.length === 0 ||
+      item.volumes.some(volume =>
+        volumesSelectValue.value.includes(volume)
+      )
+
+    const matchesMaterial =
+      materialsSelectValue.value.length === 0 ||
+      item.materials.some(material =>
+        materialsSelectValue.value.includes(material)
+      )
+
+    const matchesProduct =
+      productsSelectValue.value.length === 0 ||
+      productsSelectValue.value.some(selectedTitle =>
+        item.title.toLowerCase().includes(selectedTitle.toLowerCase().trim())
+      )
+
+    return matchesMaterial && matchesVolume && matchesProduct
+  })
+})
+
+const page = ref(1)
+const itemsPerPage = 6
+
+const paginatedCatalog = computed(() => {
+  if (!filteredCatalog.value) return []
+
+  const start = (page.value - 1) * itemsPerPage
+  const end = start + itemsPerPage
+
+  return filteredCatalog.value.slice(start, end)
+})
+
+watch(
+  [materialsSelectValue, volumesSelectValue, productsSelectValue],
+  () => {
+    page.value = 1
+  }
+)
 </script>
 
 <template>
@@ -23,19 +79,46 @@ const value = ref(['Backlog', 'Todo'])
     :title="catalog?.title"
     :ui="{
       title: 'font-serif text-left text-[#28445C]',
+      body: 'flex flex-col'
     }"
   >
-    <div class="flex gap-2">
-      <USelect v-model="value" multiple :items="items" class="w-48" />
+    <div>
+      <p class="mb-3 font-sans text-[#28445C]">
+        Фильтры:
+      </p>
+      <div class="flex gap-2">
+        <USelect
+          v-model="volumesSelectValue"
+          multiple
+          placeholder="Объем"
+          :items="volumesSelectItems"
+          class="w-30"
+          :ui="{
+            base: 'font-sans text-primary',
+          }"
+        />
 
-<!--      <USelect v-model="value" multiple :items="items" class="w-48" />-->
+        <USelect
+          v-model="materialsSelectValue"
+          multiple
+          placeholder="Материал"
+          :items="materialsSelectItems"
+          class="w-30"
+        />
 
-<!--      <USelect v-model="value" multiple :items="items" class="w-48" />-->
+        <USelect
+          v-model="productsSelectValue"
+          multiple
+          placeholder="Продукт"
+          :items="productsSelectItems"
+          class="w-30"
+        />
+      </div>
     </div>
 
-    <UPageGrid>
+    <UPageGrid v-if="filteredCatalog?.length">
       <template
-        v-for="({ image, title, volume, material, filmColor }, index) in catalog?.items"
+        v-for="({ image, title, volumes, materials, filmColor }, index) in paginatedCatalog"
         :key="index"
       >
         <UCard
@@ -64,14 +147,16 @@ const value = ref(['Backlog', 'Todo'])
               Объем:
             </dt>
             <dd class="text-right">
-              {{ volume }}
+              {{ volumes.length === 1
+              ? `${volumes[0]}`
+              : `${volumes[0]}–${volumes[volumes.length - 1]}` }} мл
             </dd>
 
             <dt>
               Материал:
             </dt>
             <dd class="text-right">
-              {{ material }}
+              {{ materials.join(', ') }}
             </dd>
 
             <dt>
@@ -93,6 +178,7 @@ const value = ref(['Backlog', 'Todo'])
         </UCard>
 
         <USeparator
+          v-if="index < paginatedCatalog.length - 1"
           :ui="{
             root: 'opacity-60 sm:hidden',
             border: 'border-[rgba(40,68,92,0.3)]'
@@ -100,6 +186,26 @@ const value = ref(['Backlog', 'Todo'])
         />
       </template>
     </UPageGrid>
+
+    <div
+      v-else
+      class="self-center py-16 flex items-center gap-2 text-[#28445C]/70 lg:justify-self-center"
+    >
+      <UIcon name="lucide:search-x" class="size-5" />
+      <p class="font-sans">
+        Ничего не найдено
+      </p>
+    </div>
+
+    <UPagination
+      v-if="filteredCatalog?.length"
+      v-model:page="page"
+      :items-per-page="itemsPerPage"
+      :total="filteredCatalog?.length"
+      show-edges
+      :sibling-count="1"
+      class="self-center lg:justify-self-center"
+    />
   </UPageSection>
 </template>
 
