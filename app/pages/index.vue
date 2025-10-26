@@ -1,6 +1,9 @@
 <script setup lang="ts">
 useHead({
-  title: 'НовоЛэнд'
+  title: 'НовоЛэнд',
+  meta: [
+    { property: 'og:image', content: '/ogImage.svg' }
+  ]
 })
 // import { gsap } from 'gsap'
 // import { ScrollTrigger } from 'gsap/ScrollTrigger'
