@@ -26,7 +26,7 @@ const toggleCallbackModal = (value: boolean) => {
   <Header @openCallbackModal="toggleCallbackModal" />
   <UMain>
     <Hero @openCallbackModal="toggleCallbackModal" />
-    <Services />
+    <Services @openCallbackModal="toggleCallbackModal" />
     <Catalog @openCallbackModal="toggleCallbackModal" />
     <Advantages />
     <About />

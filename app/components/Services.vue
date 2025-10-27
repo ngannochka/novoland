@@ -9,6 +9,14 @@ const { data: services } = await useAsyncData('services', () =>
     .first()
 )
 
+const emit = defineEmits<{
+  (e: 'openCallbackModal', value: boolean): void
+}>()
+
+const handleCallbackButtonClick = () => {
+  emit('openCallbackModal', true)
+}
+
 onMounted(() => {
   const animation = {
     autoAlpha: 0,
@@ -52,7 +60,8 @@ onMounted(() => {
         :description="service.description"
         :features="service.features"
         :button="{
-          label: service.callbackButton
+          label: service.callbackButton,
+          onClick: handleCallbackButtonClick,
         }"
         :ui="{
           root: `rounded-2xl bg-cover bg-center bg-no-repeat bg-black/50 bg-blend-multiply`,
