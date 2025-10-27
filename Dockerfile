@@ -2,11 +2,7 @@ FROM oven/bun:latest
 
 WORKDIR /app
 
-COPY bun.lock ./
-COPY package.json ./
-COPY nuxt.config.ts ./
-COPY app ./
-COPY public ./
+COPY . .
 
 RUN bun install
 RUN bun run build
