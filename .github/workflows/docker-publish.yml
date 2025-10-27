@@ -27,15 +27,17 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Prepare tags (short SHA + latest)
+      # 🔹 Подготовка тегов (короткий SHA + latest)
+      - name: Prepare image tags
         id: set-tags
         run: |
           SHORT_SHA=${GITHUB_SHA::7}
           echo "SHORT_SHA=${SHORT_SHA}" >> $GITHUB_ENV
-          # Always push two tags: short SHA and latest
+          echo "IMAGE_TAG=${SHORT_SHA}" >> $GITHUB_ENV
           echo "TAGS=ghcr.io/${GITHUB_REPOSITORY}:${SHORT_SHA},ghcr.io/${GITHUB_REPOSITORY}:latest" >> $GITHUB_ENV
           echo "Computed tags: $TAGS"
 
+      # 🔹 Сборка и публикация Docker образа
       - name: Build and push Docker image (sha + latest)
         uses: docker/build-push-action@v4
         with:
@@ -45,3 +47,20 @@ jobs:
           tags: ${{ env.TAGS }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
+
+      # 🔹 Автообновление стека novoland в Portainer
+      - name: Redeploy novoland stack in Portainer
+        env:
+          PORTAINER_URL: ${{ secrets.PORTAINER_URL }}
+          PORTAINER_TOKEN: ${{ secrets.PORTAINER_TOKEN }}
+          STACK_ID: 2
+          ENDPOINT_ID: 1
+          IMAGE_TAG: ${{ env.IMAGE_TAG }}
+        run: |
+          echo "Triggering redeploy for stack novoland with image tag $IMAGE_TAG..."
+          curl -k -X PUT \
+            -H "x-api-key: $PORTAINER_TOKEN" \
+            -H "Content-Type: application/json" \
+            "$PORTAINER_URL/api/stacks/$STACK_ID/git/redeploy?endpointId=$ENDPOINT_ID" \
+            -d "{\"env\": [{\"name\": \"IMAGE_TAG\", \"value\": \"$IMAGE_TAG\"}]}" \
+            -w "\nHTTP_STATUS:%{http_code}\n"
