@@ -1,0 +1,42 @@
+services:
+  app:
+    image: ghcr.io/ngannochka/novoland:latest
+    networks:
+      - novoland
+    deploy:
+      restart_policy:
+        condition: on-failure
+
+  caddy:
+    image: caddy:latest
+    ports:
+      - "80:80"
+      - "443:443"
+      - "443:443/udp"
+    volumes:
+      - caddy_data:/data
+      - caddy_config:/config
+    configs:
+      - source: caddyfile
+        target: /etc/caddy/Caddyfile
+    networks:
+      - novoland
+    deploy:
+      restart_policy:
+        condition: on-failure
+
+networks:
+  novoland:
+    driver: overlay
+
+volumes:
+  caddy_data:
+    external: true
+
+  caddy_config:
+    external: true
+
+configs:
+  caddyfile:
+    external: true
+    name: Caddyfile
