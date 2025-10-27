@@ -4,28 +4,28 @@
       "image": "/certificates/certificate-1.jpg"
     },
     {
-      "image": "https://s3.twcstorage.ru/f2f0a35f-e48e7736-24c2-4274-88c1-0854b97bbed7/cert-2.jpg"
+      "image": "/certificates/certificate-2.jpg"
     },
     {
-      "image": "https://s3.twcstorage.ru/f2f0a35f-e48e7736-24c2-4274-88c1-0854b97bbed7/cert-3.jpg"
+      "image": "/certificates/certificate-3.jpg"
     },
     {
-      "image": "https://s3.twcstorage.ru/f2f0a35f-e48e7736-24c2-4274-88c1-0854b97bbed7/cert-4.jpg"
+      "image": "/certificates/certificate-4.jpg"
     },
     {
-      "image": "https://s3.twcstorage.ru/f2f0a35f-e48e7736-24c2-4274-88c1-0854b97bbed7/cert-5.jpg"
+      "image": "/certificates/certificate-5.jpg"
     },
     {
-      "image": "https://s3.twcstorage.ru/f2f0a35f-e48e7736-24c2-4274-88c1-0854b97bbed7/cert-6.jpg"
+      "image": "/certificates/certificate-6.jpg"
     },
     {
-      "image": "https://s3.twcstorage.ru/f2f0a35f-e48e7736-24c2-4274-88c1-0854b97bbed7/cert-7.jpg"
+      "image": "/certificates/certificate-7.jpg"
     },
     {
-      "image": "https://s3.twcstorage.ru/f2f0a35f-e48e7736-24c2-4274-88c1-0854b97bbed7/cert-8.jpg"
+      "image": "/certificates/certificate-8.jpg"
     },
     {
-      "image": "https://s3.twcstorage.ru/f2f0a35f-e48e7736-24c2-4274-88c1-0854b97bbed7/cert-9.jpg"
+      "image": "/certificates/certificate-9.jpg"
     }
   ]
 }

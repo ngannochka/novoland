@@ -2,19 +2,19 @@
   "items": [
     {
       "image": "/partners/partner-1.png",
-      "link": "https://google.com/"
+      "link": "https://btp-nso.ru/"
     },
     {
-      "image": "https://s3.twcstorage.ru/f2f0a35f-e48e7736-24c2-4274-88c1-0854b97bbed7/partner-2.png",
-      "link": "https://google.com/"
+      "image": "/partners/partner-2.png",
+      "link": "https://nlstar.com/ru/"
     },
     {
-      "image": "https://s3.twcstorage.ru/f2f0a35f-e48e7736-24c2-4274-88c1-0854b97bbed7/partner-3.png",
-      "link": "https://google.com/"
+      "image": "/partners/partner-3.png",
+      "link": "https://www.sfcop.ru/"
     },
     {
-      "image": "https://s3.twcstorage.ru/f2f0a35f-e48e7736-24c2-4274-88c1-0854b97bbed7/partner-4.png",
-      "link": "https://google.com/"
+      "image": "/partners/partner-4.png",
+      "link": "https://www.ssmu.ru/"
     }
   ]
 }
