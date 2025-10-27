@@ -1,6 +1,6 @@
 services:
   app:
-    image: ghcr.io/ngannochka/novoland:latest
+    image: image: ghcr.io/ngannochka/novoland:${IMAGE_TAG}
     networks:
       - novoland
     deploy:
