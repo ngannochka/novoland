@@ -2,17 +2,12 @@
 useSeoMeta({
   title: 'НовоЛэнд',
   description: 'НовоЛэнд — это современное производственное предприятие, специализирующееся на полном цикле от идеи и разработки рецептуры до упаковки.',
-})
 
-// useHead({
-//   title: 'НовоЛэнд',
-//   meta: [
-//     { property: 'og:title', content: 'НовоЛэнд' },
-//     { property: 'og:description', content: '«НовоЛэнд» — это современное производственное предприятие, специализирующееся на полном цикле от идеи и разработки рецептуры до упаковки' },
-//     { property: 'og:image', content: '/ogImage.png' },
-//     { property: 'og:url', content: 'https://ngannochka-novoland.nuxt.space/' },
-//   ]
-// })
+  ogTitle: 'НовоЛэнд',
+  ogDescription: 'НовоЛэнд — это современное производственное предприятие, специализирующееся на полном цикле от идеи и разработки рецептуры до упаковки.',
+  ogImage: '/ogImage.png',
+  ogUrl: 'https://ngannochka-novoland.nuxt.space/'
+})
 
 const modal = ref(false)
 
