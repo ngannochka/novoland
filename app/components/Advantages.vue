@@ -9,26 +9,26 @@ const { data: advantages } = await useAsyncData('advantages', () =>
     .first()
 )
 
-// onMounted(() => {
-//   const animation = {
-//     autoAlpha: 0,
-//     duration: 0.3,
-//     scale: 0.95,
-//     y: 40,
-//     ease: 'expo.out',
-//   }
-//
-//   gsap.timeline({
-//     scrollTrigger: {
-//       trigger: '#advantages',
-//       start: 'top 80%',
-//       end: 'bottom 60%',
-//       toggleActions: 'play none none reverse',
-//     }
-//   })
-//     .from('.advantages', animation)
-//     // .from('.advantage', { ...animation, stagger: 0.3 }, '>-0.15')
-// })
+onMounted(() => {
+  const animation = {
+    autoAlpha: 0,
+    duration: 0.3,
+    scale: 0.95,
+    y: 40,
+    ease: 'expo.out',
+  }
+
+  gsap.timeline({
+    scrollTrigger: {
+      trigger: '#advantages',
+      start: 'top 80%',
+      end: 'bottom 60%',
+      toggleActions: 'play none none reverse',
+    }
+  })
+    .from('.advantages', animation)
+    // .from('.advantage', { ...animation, stagger: 0.3 }, '>-0.15')
+})
 </script>
 
 <template>

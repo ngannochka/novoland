@@ -76,26 +76,26 @@ watch(
   }
 )
 
-// onMounted(() => {
-//   const animation = {
-//     autoAlpha: 0,
-//     duration: 0.3,
-//     scale: 0.95,
-//     y: 40,
-//     ease: 'expo.out',
-//   }
-//
-//   gsap.timeline({
-//     scrollTrigger: {
-//       trigger: '#catalog',
-//       start: 'top 80%', // когда верх блока доходит до 80% экрана
-//       end: 'bottom 60%',
-//       toggleActions: 'play none none reverse', // можно поиграться с этим
-//       // scrub: 1, // включи, если хочешь, чтобы шло плавно вместе со скроллом
-//     }
-//   })
-//     .from('.catalog', animation)
-// })
+onMounted(() => {
+  const animation = {
+    autoAlpha: 0,
+    duration: 0.3,
+    scale: 0.95,
+    y: 40,
+    ease: 'expo.out',
+  }
+
+  gsap.timeline({
+    scrollTrigger: {
+      trigger: '#catalog',
+      start: 'top 80%', // когда верх блока доходит до 80% экрана
+      end: 'bottom 60%',
+      toggleActions: 'play none none reverse', // можно поиграться с этим
+      // scrub: 1, // включи, если хочешь, чтобы шло плавно вместе со скроллом
+    }
+  })
+    .from('.catalog', animation)
+})
 </script>
 
 <template>
