@@ -57,5 +57,5 @@ jobs:
           curl -k -X PUT \
             -H "x-api-key: $PORTAINER_TOKEN" \
             -H "Content-Type: application/json" \
-            "$PORTAINER_URL/api/stacks/$STACK_ID/git/redeploy?endpointId=$ENDPOINT_ID" \
-            -d '{}' -w "\nHTTP_STATUS:%{http_code}\n"
+            "$PORTAINER_URL/api/stacks/2/git/redeploy?endpointId=1&pullImage=true" \
+            -d '{}'
