@@ -4,6 +4,7 @@ WORKDIR /app
 
 COPY . .
 
+RUN apt-get update && apt-get install -y python3 make g++
 RUN bun install
 RUN bun run build
 
