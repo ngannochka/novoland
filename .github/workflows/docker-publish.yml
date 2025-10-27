@@ -45,3 +45,17 @@ jobs:
           tags: ${{ env.TAGS }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
+
+      - name: Redeploy novoland stack in Portainer
+        env:
+          PORTAINER_URL: ${{ secrets.PORTAINER_URL }}
+          PORTAINER_TOKEN: ${{ secrets.PORTAINER_TOKEN }}
+          STACK_ID: 2
+          ENDPOINT_ID: 1
+        run: |
+          echo "Triggering redeploy for stack novoland..."
+          curl -k -X PUT \
+            -H "x-api-key: $PORTAINER_TOKEN" \
+            -H "Content-Type: application/json" \
+            "$PORTAINER_URL/api/stacks/$STACK_ID/git/redeploy?endpointId=$ENDPOINT_ID" \
+            -d '{}' -w "\nHTTP_STATUS:%{http_code}\n"
