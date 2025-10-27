@@ -92,7 +92,7 @@ const currentYear = new Date().getFullYear()
 
     <template #right>
       <NuxtLink to="/">
-        <NuxtImg src="/footer/footerLogo.svg" class="h-7 mb-4 lg:m-0" />
+        <NuxtImg src="/footer/footerLogo.svg" alt="Логотип компании НовоЛэнд" class="h-7 mb-4 lg:m-0" />
       </NuxtLink>
 
       <NuxtLink
