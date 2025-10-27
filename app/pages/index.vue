@@ -1,4 +1,10 @@
 <script setup lang="ts">
+useHead({
+  link: [
+    { rel: 'canonical', href: 'https://ngannochka-novoland.nuxt.space' }
+  ]
+})
+
 useSeoMeta({
   title: 'НовоЛэнд',
   description: 'НовоЛэнд — это современное производственное предприятие, специализирующееся на полном цикле от идеи и разработки рецептуры до упаковки.',
