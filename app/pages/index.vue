@@ -1,7 +1,7 @@
 <script setup lang="ts">
 useHead({
   link: [
-    { rel: 'canonical', href: 'https://ngannochka-novoland.nuxt.space' }
+    { rel: 'canonical', href: 'https://novoland54.ru/' }
   ]
 })
 
@@ -12,7 +12,7 @@ useSeoMeta({
   ogTitle: 'НовоЛэнд',
   ogDescription: 'НовоЛэнд — это современное производственное предприятие, специализирующееся на полном цикле от идеи и разработки рецептуры до упаковки.',
   ogImage: '/ogImage.png',
-  ogUrl: 'https://ngannochka-novoland.nuxt.space/'
+  ogUrl: 'https://novoland54.ru/'
 })
 
 const modal = ref(false)
