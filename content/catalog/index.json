@@ -111,7 +111,7 @@
       "image": "/catalog/catalog-7.png",
       "title": "Двояковыпуклая ампула Ф 6/2",
       "volumes": [
-        40
+        35
       ],
       "materials": [
         "ПВХ",
@@ -124,19 +124,6 @@
       "image": "/catalog/catalog-8.png",
       "title": "Двояковыпуклая ампула Ф 7/2",
       "volumes": [
-        18
-      ],
-      "materials": [
-        "ПВХ",
-        "ПЭ",
-        "EVOH"
-      ],
-      "filmColor": "белый, коричневый, собственный"
-    },
-    {
-      "image": "/catalog/catalog-9.png",
-      "title": "Двояковыпуклая ампула Ф 8/2",
-      "volumes": [
         25
       ],
       "materials": [
@@ -148,7 +135,7 @@
     },
     {
       "image": "/catalog/catalog-10.png",
-      "title": "Двояковыпуклая ампула Ф 9/2",
+      "title": "Двояковыпуклая ампула Ф 8/2",
       "volumes": [
         50
       ],
