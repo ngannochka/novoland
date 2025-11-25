@@ -2,7 +2,6 @@
 import type { FormSubmitEvent } from '@nuxt/ui'
 import { vMaska } from 'maska/vue'
 import * as z from 'zod'
-import { Bot } from 'grammy'
 
 const { open } = defineProps<{
   open: boolean
@@ -30,26 +29,64 @@ const state = reactive<Partial<Schema>>({
 
 const toast = useToast()
 
-const bot = new Bot('7570834719:AAFpduL2h3L0NuI6OsF69QTmtBQveKAnirc')
-
 const onSubmit = async (event: FormSubmitEvent<Schema>) => {
-  await bot.api.sendMessage('-1002981267402', `Имя: ${event.data.name}\nТелефон: ${event.data.phone}\nПочта: ${event.data.email}`)
+  try {
+    await $fetch('https://b24-3loy1g.bitrix24.ru/rest/113/p7aghnohpqoplhg9/crm.lead.add.json', {
+      method: 'POST',
+      body: {
+        fields: {
+          TITLE: 'Лид с сайта NovoLand',
+          NAME: event.data.name,
+          PHONE: [
+            {
+              VALUE: event.data.phone,
+              VALUE_TYPE: 'WORK',
+            },
+          ],
+          EMAIL: [
+            {
+              VALUE: event.data.email,
+              VALUE_TYPE: 'WORK',
+            },
+          ],
+          SOURCE_ID: 'WEB',
+          STATUS_ID: 'NEW',
+          ASSIGNED_BY_ID: 71,
+        },
+        params: {
+          REGISTER_SONET_EVENT: 'Y'
+        }
+      },
+    })
 
-  toast.add({
-    title: 'Заявка получена!',
-    description: 'Мы свяжемся с Вами в ближайшее время.',
-    ui: {
-      title: 'font-serif text-[#28445C]',
-      description: 'font-sans text-[#28445C]',
-    },
-    progress: {
+    toast.add({
+      title: 'Заявка получена!',
+      description: 'Мы свяжемся с Вами в ближайшее время.',
       ui: {
-        indicator: 'bg-[#28445C]'
+        title: 'font-serif text-[#28445C]',
+        description: 'font-sans text-[#28445C]',
+      },
+      progress: {
+        ui: {
+          indicator: 'bg-[#28445C]'
+        }
       }
-    }
-  })
+    })
+  } catch (error) {
+    console.error(error)
 
-  emit('toggleCallbackModal', false)
+    toast.add({
+      title: 'Произошла ошибка!',
+      description: 'Попробуйте позже.',
+      color: 'error',
+      ui: {
+        title: 'font-serif text-[#28445C]',
+        description: 'font-sans text-[#28445C]',
+      }
+    })
+  } finally {
+    emit('toggleCallbackModal', false)
+  }
 }
 </script>
 
@@ -82,7 +119,7 @@ const onSubmit = async (event: FormSubmitEvent<Schema>) => {
         >
           <UInput
             v-model="state.name"
-            placeholder="Иван Иванов"
+            placeholder="Иван"
             color="neutral"
             :ui="{
               base: 'w-full rounded-full font-sans placeholder:font-sans'
